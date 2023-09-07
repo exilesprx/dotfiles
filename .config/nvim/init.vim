@@ -1,3 +1,5 @@
+set relativenumber
+
 call plug#begin()
 
 Plug 'nvim-lua/plenary.nvim'
