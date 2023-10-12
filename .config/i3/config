@@ -330,6 +330,7 @@ assign [class="TelegramDesktop"] $ws5
 assign [class="Code"] $ws6
 assign [class ="Spotify"] $ws7
 assign [class ="jetbrains-phpstorm"] $ws8
+assign [class ="jetbrains-toolbox"] $ws8
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Alacritty] focus
@@ -341,6 +342,7 @@ for_window [class=TelegramDesktop] focus
 for_window [class=Code] focus
 for_window [class=Spotify] focus
 for_window [class=jetbrains-phpstorm] focus
+for_window [class=jetbrains-toolbox] focus
 
 ##############
 # compositor #
