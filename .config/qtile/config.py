@@ -221,10 +221,6 @@ def init_widgets_list():
            foreground = colors[2],
            background = colors[1]
        ),
-       widget.CurrentLayout(
-           foreground = colors[2],
-           background = colors[1]
-        ),
        widget.Spacer(
            length = bar.STRETCH,
            background = colors[1]
@@ -232,7 +228,25 @@ def init_widgets_list():
        widget.TextBox(
            font = system_font,
            fontsize = 15,
-           text = " 󰻠",
+           text = " 󰍹",
+           foreground = colors[3],
+           background = colors[1]
+        ),
+       widget.CurrentLayout(
+           foreground = colors[2],
+           background = colors[1]
+        ),
+       widget.Sep(
+           size_percent = 60,
+           margin = 5,
+           linewidth = 2,
+           background = colors[1],
+           foreground = "#555555"
+        ),
+       widget.TextBox(
+           font = system_font,
+           fontsize = 15,
+           text = "󰻠",
            foreground = colors[3],
            background = colors[1]
         ),
@@ -296,6 +310,26 @@ def init_widgets_list():
            background = colors[1],
            update_interval = 5,
            func = lambda: subprocess.check_output(f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
+        ),
+       widget.Spacer(
+           length = bar.STRETCH,
+           background = colors[1]
+        ),
+       widget.TextBox(
+           font = system_font,
+           fontsize = 15,
+           text = " 󰈀",
+           foreground = colors[4],
+           background = colors[1]
+        ),
+       widget.Net(
+           format = "{down} ↓↑ {up}",
+           foreground = colors[2],
+           background = colors[1],
+           update_interval = 2,
+           mouse_callbacks = {
+               'Button1': lambda: qtile.cmd_spawn("def-nmdmenu")
+            }
         ),
     ]
     return widgets
