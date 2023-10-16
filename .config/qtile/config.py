@@ -24,15 +24,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import shutil
+
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
-
-import shutil
 
 mod = "mod4"
-terminal = guess_terminal()
+terminal = "alacritty"
 system_font = "IntoneMono Nerd Font Mono"
 
 keys = [
@@ -274,6 +273,13 @@ def init_widgets_list():
            mouse_callbacks = {
                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
             }
+        ),
+       widget.Sep(
+           size_percent = 60,
+           margin = 5,
+           linewidth = 2,
+           background = colors[1],
+           foreground = "#555555"
         ),
     ]
     return widgets
