@@ -25,6 +25,8 @@
 # SOFTWARE.
 
 import shutil
+import subprocess
+import os
 
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
@@ -33,6 +35,7 @@ from libqtile.lazy import lazy
 mod = "mod4"
 terminal = "alacritty"
 system_font = "IntoneMono Nerd Font Mono"
+home_dir = os.path.expanduser("~")
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -185,7 +188,7 @@ def init_widgets_list():
                    'j4-dmenu'
                 ),
                'Button3': lambda: qtile.cmd_spawn(
-                   f'alacritty -e vim ${HOME}/.config/qtile/config.py'
+                   f'alacritty -e vim {home_dir}/.config/qtile/config.py'
                 )
              }
         ),
@@ -229,7 +232,7 @@ def init_widgets_list():
        widget.TextBox(
            font = system_font,
            fontsize = 15,
-           text = "󰻠",
+           text = " 󰻠",
            foreground = colors[3],
            background = colors[1]
         ),
@@ -245,7 +248,7 @@ def init_widgets_list():
        widget.TextBox(
            font = system_font,
            fontsize = 15,
-           text = "",
+           text = " ",
            foreground = colors[4],
            background = colors[1]
         ),
@@ -261,14 +264,14 @@ def init_widgets_list():
        widget.TextBox(
            font = system_font,
            fontsize = 15,
-           text = "󰋊",
+           text = " 󰋊",
            foreground = colors[6],
            background = colors[1]
         ),
        widget.GenPollText(
            foreground = colors[2],
            background = colors[1],
-           update_interval = 5,
+           update_interval = 500,
            func = lambda: diskspace('FreeSpace'),
            mouse_callbacks = {
                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
@@ -280,6 +283,19 @@ def init_widgets_list():
            linewidth = 2,
            background = colors[1],
            foreground = "#555555"
+        ),
+       widget.TextBox(
+           font = system_font,
+           fontsize = 15,
+           text = " ",
+           foreground = colors[4],
+           background = colors[1]
+        ),
+       widget.GenPollText(
+           foreground = colors[2],
+           background = colors[1],
+           update_interval = 5,
+           func = lambda: subprocess.check_output(f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
         ),
     ]
     return widgets
