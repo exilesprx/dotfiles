@@ -331,6 +331,44 @@ def init_widgets_list():
                'Button1': lambda: qtile.cmd_spawn("def-nmdmenu")
             }
         ),
+       widget.Sep(
+           size_percent = 60,
+           margin = 5,
+           linewidth = 2,
+           background = colors[1],
+           foreground = "#555555"
+        ),
+       widget.TextBox(
+           font = system_font,
+           fontsize = 15,
+           text = " ",
+           foreground = colors[7],
+           background = colors[1],
+        ),
+       widget.Clock(
+           format = '%b %d-%Y',
+           foreground = colors[2],
+           background = colors[1]
+        ),
+       widget.TextBox(
+           font = system_font,
+           fontsize = 15,
+           text = " 󰥔",
+           foreground = colors[7],
+           background = colors[1],
+        ),
+       widget.Clock(
+           format = '%I:%M %p',
+           foreground = colors[2],
+           background = colors[1]
+        ),
+       widget.Systray(
+           background = colors[1]
+        ),
+       widget.Spacer(
+           length = 5,
+           background = colors[1]
+        )
     ]
     return widgets
 
