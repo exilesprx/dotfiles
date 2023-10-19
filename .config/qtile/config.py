@@ -118,20 +118,20 @@ layout_theme = {
     "font_size": 12,
     "border_focus": "#bd93f9",
     "border_normal": "#555555"
-    }
+}
 
 colors = [
-        ["#232a36", "#282a36"],
-        ["#282a36", "#282a36"],
-        ["#f8f8f2", "#f8f8f1"],
-        ["#ff5555", "#ff5555"],
-        ["#50fa7b", "#50fa7b"],
-        ["#f1fa8c", "#f1fa8c"],
-        ["#bd93f9", "#bd93f9"],
-        ["#ff79c6", "#ff79c6"],
-        ["#8be9fd", "#8be9fd"],
-        ["#bbbbbb", "#bbbbbb"]
-    ]
+    ["#232a36", "#282a36"],
+    ["#282a36", "#282a36"],
+    ["#f8f8f2", "#f8f8f1"],
+    ["#ff5555", "#ff5555"],
+    ["#50fa7b", "#50fa7b"],
+    ["#f1fa8c", "#f1fa8c"],
+    ["#bd93f9", "#bd93f9"],
+    ["#ff79c6", "#ff79c6"],
+    ["#8be9fd", "#8be9fd"],
+    ["#bbbbbb", "#bbbbbb"]
+]
 
 layouts = [
     layout.Columns(**layout_theme),
@@ -156,8 +156,9 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
 def format_bytes(num_bytes):
-    power = 2**10
+    power = 2 ** 10
     n = 0
     power_labels = {0: '', 1: 'K', 2: 'M', 3: 'G', 4: 'T'}
     while num_bytes > power:
@@ -165,220 +166,223 @@ def format_bytes(num_bytes):
         n += 1
     return f"{round(num_bytes, 2)}{power_labels[n]}"
 
+
 def diskspace(mode):
     total, used, free = shutil.disk_usage('/')
     data_disk = {
-            'DiskUsage': f'{format_bytes(used)} / {format_bytes(total)}',
-            'FreeSpace': f'{format_bytes(free)}'
-        }
+        'DiskUsage': f'{format_bytes(used)} / {format_bytes(total)}',
+        'FreeSpace': f'{format_bytes(free)}'
+    }
     return data_disk[mode]
 
-def init_widgets_list(): 
+
+def init_widgets_list():
     widgets = [
-       widget.Spacer(
-           length = 5,
-           background = colors[1]
-       ),
-       widget.Image(
-           filename = "/usr/share/pixmaps/archlinux-logo.png",
-           background = colors[1],
-           margin = 3,
-           mouse_callbacks = {
-               'Button1': lambda: qtile.cmd_spawn(
-                   'j4-dmenu'
+        widget.Spacer(
+            length=5,
+            background=colors[1]
+        ),
+        widget.Image(
+            filename="/usr/share/pixmaps/archlinux-logo.png",
+            background=colors[1],
+            margin=3,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(
+                    'j4-dmenu'
                 ),
-               'Button3': lambda: qtile.cmd_spawn(
-                   f'alacritty -e vim {home_dir}/.config/qtile/config.py'
+                'Button3': lambda: qtile.cmd_spawn(
+                    f'alacritty -e vim {home_dir}/.config/qtile/config.py'
                 )
-             }
-        ),
-       widget.GroupBox(
-           font = system_font,
-           fontsize = 14,
-           foreground = colors[2],
-           background = colors[1],
-           borderWidth = 4,
-           hightlight_method = "text",
-           this_current_screen_border = colors[6],
-           active = colors[4],
-           inactive = colors[2]
-        ),
-       widget.Sep(
-           size_percent = 60,
-           margin = 5,
-           linewidth = 2,
-           background = colors[1],
-           foreground = "#555555"
-        ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = "",
-           foreground = colors[6],
-           background = colors[1]
-        ),
-       widget.Volume(
-           foreground = colors[2],
-           background = colors[1]
-       ),
-       widget.Spacer(
-           length = bar.STRETCH,
-           background = colors[1]
-        ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " 󰍹",
-           foreground = colors[3],
-           background = colors[1]
-        ),
-       widget.CurrentLayout(
-           foreground = colors[2],
-           background = colors[1]
-        ),
-       widget.Sep(
-           size_percent = 60,
-           margin = 5,
-           linewidth = 2,
-           background = colors[1],
-           foreground = "#555555"
-        ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = "󰻠",
-           foreground = colors[3],
-           background = colors[1]
-        ),
-       widget.CPU(
-           format = "{load_percent}%",
-           foreground = colors[2],
-           background = colors[1],
-           update_interval = 2,
-           mouse_callbacks = {
-               'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
             }
         ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " ",
-           foreground = colors[4],
-           background = colors[1]
+        widget.GroupBox(
+            font=system_font,
+            fontsize=14,
+            foreground=colors[2],
+            background=colors[1],
+            borderWidth=4,
+            hightlight_method="text",
+            this_current_screen_border=colors[6],
+            active=colors[4],
+            inactive=colors[2]
         ),
-       widget.Memory(
-           format = "{MemUsed:.0f}{mm}",
-           foreground = colors[2],
-           background = colors[1],
-           update_interval = 2,
-           mouse_callbacks = {
-               'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text="",
+            foreground=colors[6],
+            background=colors[1]
+        ),
+        widget.Volume(
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Spacer(
+            length=bar.STRETCH,
+            background=colors[1]
+        ),
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" 󰍹",
+            foreground=colors[3],
+            background=colors[1]
+        ),
+        widget.CurrentLayout(
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text="󰻠",
+            foreground=colors[3],
+            background=colors[1]
+        ),
+        widget.CPU(
+            format="{load_percent}%",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
             }
         ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " 󰋊",
-           foreground = colors[6],
-           background = colors[1]
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" ",
+            foreground=colors[4],
+            background=colors[1]
         ),
-       widget.GenPollText(
-           foreground = colors[2],
-           background = colors[1],
-           update_interval = 500,
-           func = lambda: diskspace('FreeSpace'),
-           mouse_callbacks = {
-               'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
+        widget.Memory(
+            format="{MemUsed:.0f}{mm}",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
             }
         ),
-       widget.Sep(
-           size_percent = 60,
-           margin = 5,
-           linewidth = 2,
-           background = colors[1],
-           foreground = "#555555"
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" 󰋊",
+            foreground=colors[6],
+            background=colors[1]
         ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " ",
-           foreground = colors[4],
-           background = colors[1]
-        ),
-       widget.GenPollText(
-           foreground = colors[2],
-           background = colors[1],
-           update_interval = 5,
-           func = lambda: subprocess.check_output(f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
-        ),
-       widget.Spacer(
-           length = bar.STRETCH,
-           background = colors[1]
-        ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " 󰈀",
-           foreground = colors[4],
-           background = colors[1]
-        ),
-       widget.Net(
-           format = "{down} ↓↑ {up}",
-           foreground = colors[2],
-           background = colors[1],
-           update_interval = 2,
-           mouse_callbacks = {
-               'Button1': lambda: qtile.cmd_spawn("def-nmdmenu")
+        widget.GenPollText(
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=500,
+            func=lambda: diskspace('FreeSpace'),
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn(f"{terminal} -e gtop")
             }
         ),
-       widget.Sep(
-           size_percent = 60,
-           margin = 5,
-           linewidth = 2,
-           background = colors[1],
-           foreground = "#555555"
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
         ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " ",
-           foreground = colors[7],
-           background = colors[1],
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" ",
+            foreground=colors[4],
+            background=colors[1]
         ),
-       widget.Clock(
-           format = '%b %d-%Y',
-           foreground = colors[2],
-           background = colors[1]
+        widget.GenPollText(
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=5,
+            func=lambda: subprocess.check_output(f"{home_dir}/.config/qtile/scripts/num-installed-pkgs").decode("utf-8")
         ),
-       widget.TextBox(
-           font = system_font,
-           fontsize = 15,
-           text = " 󰥔",
-           foreground = colors[7],
-           background = colors[1],
+        widget.Spacer(
+            length=bar.STRETCH,
+            background=colors[1]
         ),
-       widget.Clock(
-           format = '%I:%M %p',
-           foreground = colors[2],
-           background = colors[1]
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" 󰈀",
+            foreground=colors[4],
+            background=colors[1]
         ),
-       widget.Systray(
-           background = colors[1]
+        widget.Net(
+            format="{down} ↓↑ {up}",
+            foreground=colors[2],
+            background=colors[1],
+            update_interval=2,
+            mouse_callbacks={
+                'Button1': lambda: qtile.cmd_spawn("def-nmdmenu")
+            }
         ),
-       widget.Spacer(
-           length = 5,
-           background = colors[1]
+        widget.Sep(
+            size_percent=60,
+            margin=5,
+            linewidth=2,
+            background=colors[1],
+            foreground="#555555"
+        ),
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" ",
+            foreground=colors[7],
+            background=colors[1],
+        ),
+        widget.Clock(
+            format='%b %d-%Y',
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.TextBox(
+            font=system_font,
+            fontsize=15,
+            text=" 󰥔",
+            foreground=colors[7],
+            background=colors[1],
+        ),
+        widget.Clock(
+            format='%I:%M %p',
+            foreground=colors[2],
+            background=colors[1]
+        ),
+        widget.Systray(
+            background=colors[1]
+        ),
+        widget.Spacer(
+            length=5,
+            background=colors[1]
         )
     ]
     return widgets
 
+
 screens = [
     Screen(
         top=bar.Bar(
-            widgets = init_widgets_list(),
-            size = 35,
-            opacity = 0.9,
-            margin = [5, 10, 0, 10]
+            widgets=init_widgets_list(),
+            size=35,
+            opacity=0.9,
+            margin=[5, 10, 0, 10]
         ),
     ),
 ]
