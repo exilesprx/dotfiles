@@ -324,6 +324,7 @@ set $ws10 "10"
 assign [class="Alacritty"] $ws1
 assign [class="(?i)firefox"] $ws2
 assign [class="Google-chrome"] $ws2
+assign [class="Thorium-browser"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="thunderbird"] $ws4
 assign [class="TelegramDesktop"] $ws5
@@ -336,6 +337,7 @@ assign [class ="jetbrains-toolbox"] $ws8
 for_window [class=Alacritty] focus
 for_window [class=(?i)firefox] focus
 for_window [class=Google-chrome] focus
+for_window [class=Thorium-browser] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
