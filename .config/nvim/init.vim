@@ -10,4 +10,3 @@ Plug 'navarasu/onedark.nvim'
 call plug#end()
 
 lua require('init')
-lua require('onedark').load()
