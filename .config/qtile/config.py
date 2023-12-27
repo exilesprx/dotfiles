@@ -28,7 +28,7 @@ import shutil
 import subprocess
 import os
 
-from libqtile import bar, layout, widget
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -394,6 +394,13 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
+
+@hook.subscribe.startup_once
+def autostart():
+    start = os.path.expanduser(f"{home_dir}/.config/qtile/scripts/autostart.sh")
+    subprocess.call([start])
+
+
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
@@ -412,6 +419,7 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ]
 )
+
 auto_fullscreen = True
 focus_on_window_activation = "smart"
 reconfigure_screens = True
