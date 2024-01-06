@@ -1,0 +1,4 @@
+import = ["/home/acampbell/.config/alacritty/font.toml", "/home/acampbell/.config/alacritty/onedark.toml"]
+
+[window]
+opacity = 0.9
