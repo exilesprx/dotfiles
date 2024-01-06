@@ -1,6 +1,0 @@
-import:
-  - ~/.config/alacritty/font.yml
-  - ~/.config/alacritty/onedark.yml
-
-window:
-  opacity: 0.9
