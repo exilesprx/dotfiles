@@ -30,7 +30,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
-    neovim
     wget
   ];
 
@@ -42,7 +41,12 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.thunar.enable = true;
+  programs = {
+    alacritty.enable = true;
+    git.enable = true;
+    thunar.enable = true;
+    neovim.enable = true;
+  }
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -80,8 +84,6 @@
     packages = with pkgs; [
       firefox
       tree
-      alacritty
-      git
     ];
   };
 
