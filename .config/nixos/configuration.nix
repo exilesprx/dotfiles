@@ -46,6 +46,7 @@
     git.enable = true;
     thunar.enable = true;
     neovim.enable = true;
+    zsh.enable = true;
   }
 
   # networking.hostName = "nixos"; # Define your hostname.
