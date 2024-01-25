@@ -308,7 +308,7 @@ set $ws5 "5:"
 set $ws6 "6:󰨞"
 set $ws7 "7:󰫔"
 set $ws8 "8:"
-set $ws9 "9"
+set $ws9 "9:󰦭"
 set $ws10 "10"
 
 # use workspaces on different displays:
@@ -331,7 +331,8 @@ assign [class="TelegramDesktop"] $ws5
 assign [class="Code"] $ws6
 assign [class ="Spotify"] $ws7
 assign [class ="jetbrains-phpstorm"] $ws8
-assign [class ="jetbrains-toolbox"] $ws4
+assign [class ="jetbrains-pycharm-ce"] $ws8
+assign [class ="jetbrains-toolbox"] $ws9
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Alacritty] focus
@@ -344,6 +345,7 @@ for_window [class=TelegramDesktop] focus
 for_window [class=Code] focus
 for_window [class=Spotify] focus
 for_window [class=jetbrains-phpstorm] focus
+for_window [class=jetbrains-pycharm-ce] focus
 for_window [class=jetbrains-toolbox] focus
 
 ##############
