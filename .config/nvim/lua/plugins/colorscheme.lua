@@ -6,11 +6,10 @@ return {
     },
   },
   {
-    "olimorris/onedarkpro.nvim",
+    "navarasu/onedark.nvim",
     opts = {
-      options = {
-        transparency = true,
-      },
+      style = "warm",
+      transparent = true,
     },
   },
   {
