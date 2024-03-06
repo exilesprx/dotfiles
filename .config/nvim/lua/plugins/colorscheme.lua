@@ -12,10 +12,4 @@ return {
       transparent = true,
     },
   },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "onedark",
-    },
-  },
 }
