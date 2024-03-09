@@ -6,6 +6,7 @@ return {
         "haskell-language-server",
         "lua-language-server",
         "phpactor",
+        "php-cs-fixer",
         "python-lsp-server",
         "stylua",
         "shellcheck",
