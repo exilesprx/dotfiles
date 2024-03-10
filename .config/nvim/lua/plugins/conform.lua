@@ -6,17 +6,18 @@ return {
   opts = {
     ---@type table<string, conform.FormatterUnit[]>
     formatters_by_ft = {
-      ["lua"] = { "stylua" },
-      ["sh"] = { "shfmt" },
-      ["php"] = { "phpcs" },
-      ["javascript"] = { "prettier" },
-      ["typescript"] = { "prettier" },
-      ["vue"] = { "prettier" },
       ["css"] = { "prettier" },
       ["html"] = { "prettier" },
+      ["javascript"] = { "prettier" },
       ["json"] = { "prettier" },
-      ["yaml"] = { "prettier" },
+      ["lua"] = { "stylua" },
       ["markdown"] = { "prettier" },
+      ["php"] = { "phpcs" },
+      ["python"] = { "python" },
+      ["typescript"] = { "prettier" },
+      ["sh"] = { "shfmt" },
+      ["vue"] = { "prettier" },
+      ["yaml"] = { "prettier" },
     },
     -- The options you set here will be merged with the builtin formatters.
     -- You can also define any custom formatters here.
