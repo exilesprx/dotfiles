@@ -1,7 +1,8 @@
 import = [
   "/home/acampbell/.config/alacritty/font.toml",
   # "/home/acampbell/.config/alacritty/onedark.toml"
-  "/home/acampbell/.config/alacritty/catppuccin-macchiato.toml"
+  #  "/home/acampbell/.config/alacritty/catppuccin-macchiato.toml"
+  "/home/acampbell/.config/alacritty/catppuccin-mocha.toml"
 ]
 
 [window]

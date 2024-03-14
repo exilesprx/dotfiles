@@ -14,6 +14,7 @@ return {
         "python",
         "typescript",
         "vim",
+        "vue",
         "yaml",
         "zig",
       },

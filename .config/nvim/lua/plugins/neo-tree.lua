@@ -8,6 +8,9 @@ return {
           hide_dotfiles = false,
         },
       },
+      window = {
+        position = "current",
+      },
     },
   },
 }

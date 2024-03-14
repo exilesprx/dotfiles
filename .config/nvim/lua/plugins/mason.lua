@@ -11,6 +11,7 @@ return {
         "stylua",
         "shellcheck",
         "shfmt",
+        "vue-language-server",
         "zls",
       },
     },
