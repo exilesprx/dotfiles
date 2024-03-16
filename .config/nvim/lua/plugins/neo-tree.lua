@@ -8,8 +8,9 @@ return {
           hide_dotfiles = false,
         },
       },
+      popup_border_style = "rounded",
       window = {
-        position = "current",
+        position = "float",
       },
     },
   },
