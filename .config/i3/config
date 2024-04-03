@@ -307,8 +307,8 @@ set $ws4 "4:󰨞"
 set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:󰦭"
-set $ws8 "8:"
-set $ws9 "9:"
+set $ws8 "8:"
+set $ws9 "9:"
 set $ws10 "10:"
 
 # use workspaces on different displays:
@@ -333,6 +333,7 @@ assign [class ="jetbrains-toolbox"] $ws7
 assign [class="thunderbird"] $ws8
 assign [class="TelegramDesktop"] $ws8
 assign [class ="Spotify"] $ws8
+assign [class="Gimp-2.10"] $ws9
 
 # automatic set focus new window if it opens on another workspace than the current:
 for_window [class=Alacritty] focus
@@ -347,6 +348,7 @@ for_window [class=Spotify] focus
 for_window [class=jetbrains-phpstorm] focus
 for_window [class=jetbrains-toolbox] focus
 for_window [class=jetbrains-pycharm-ce] focus
+for_window [class=Gimp-2.10] focus
 
 ##############
 # compositor #
