@@ -9,9 +9,6 @@ alias pac-clean='pacman -Qtdq | pacman -Rns -'
 alias cat='bat'
 alias grep='batgrep'
 
-# Autojump
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-
 # Ghcup
 [ -f "/home/acampbell/.ghcup/env" ] && source "/home/acampbell/.ghcup/env" # ghcup-env
 
@@ -68,3 +65,6 @@ zplug load
 
 # Zig
 [ -f "/opt/zig/bin/zig" ] && export PATH=$PATH:/opt/zig/bin/
+
+# Zoxide - should be called after compinit
+[ -f "$HOME/.local/bin/zoxide" ] && export PATH=$PATH:$HOME/.local/bin && eval "$(zoxide init zsh)"
