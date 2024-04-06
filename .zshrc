@@ -5,9 +5,15 @@ alias l='lsd -lav --ignore-glob ".*"'   # show long listing but no hidden dotfil
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias welcome='eos-welcome --once'
-alias pac-clean='pacman -Qtdq | pacman -Rns -'
+alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
 alias cat='bat'
 alias grep='batgrep'
+
+# Exports
+export TERM="xterm-256color"
+export EDITOR="nvim"
+export VISUAL="code"
+export MANPAGER="nvim +Man!"
 
 # Ghcup
 [ -f "/home/acampbell/.ghcup/env" ] && source "/home/acampbell/.ghcup/env" # ghcup-env
