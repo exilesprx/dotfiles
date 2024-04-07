@@ -12,7 +12,7 @@ alias grep='batgrep'
 # Exports
 export TERM="xterm-256color"
 export EDITOR="nvim"
-export VISUAL="code"
+export VISUAL="gedit"
 export MANPAGER="nvim +Man!"
 
 # Ghcup
