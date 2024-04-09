@@ -16,7 +16,9 @@ export VISUAL="gedit"
 export MANPAGER="nvim +Man!"
 
 # Ghcup
-[ -f "/home/acampbell/.ghcup/env" ] && source "/home/acampbell/.ghcup/env" # ghcup-env
+if [ -f "/home/acampbell/.ghcup/env" ]; then
+  source "/home/acampbell/.ghcup/env" # ghcup-env
+fi
 
 # History for zsh
 HISTFILE=~/.zsh_history
@@ -70,7 +72,12 @@ fi
 zplug load
 
 # Zig
-[ -f "/opt/zig/bin/zig" ] && export PATH=$PATH:/opt/zig/bin/
+if [ -f "/opt/zig/bin/zig" ]; then
+  export PATH=$PATH:/opt/zig/bin/
+fi
 
 # Zoxide - should be called after compinit
-[ -f "$HOME/.local/bin/zoxide" ] && export PATH=$PATH:$HOME/.local/bin && eval "$(zoxide init zsh)"
+if [ -f "$HOME/.local/bin/zoxide" ]; then
+  export PATH=$PATH:$HOME/.local/bin
+  eval "$(zoxide init zsh)"
+fi
