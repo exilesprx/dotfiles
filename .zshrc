@@ -71,11 +71,6 @@ if ! zplug check --verbose; then
 fi
 zplug load
 
-# Zig
-if [ -f "/opt/zig/bin/zig" ]; then
-  export PATH=$PATH:/opt/zig/bin/
-fi
-
 # Zoxide - should be called after compinit
 if [ -f "$HOME/.local/bin/zoxide" ]; then
   export PATH=$PATH:$HOME/.local/bin
