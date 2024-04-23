@@ -509,12 +509,24 @@ set $grey		#b0b5bd
 set $mediumgrey		#8b8b8b
 set $yellowbrown	#e1b700
 
+# catppuccin colors
+set $mantledark  #11111b
+set $basedark #1e1e2e
+set $rosewater #f5e0dc
+set $red #f38ba8
+set $green #a6e3a1
+set $yellow #f9e2af
+set $lavender #b4befe
+set $pink #f5c2e7
+set $sapphire #74c7ec
+set $ghost #cdd6f4
+
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+client.focused          $sapphire $sapphire $ghost $basedark $basedark
+client.unfocused        $sapphire $sapphire $mantledark $basedark $basedark
+client.focused_inactive $lavender $lavender $ghost $mantledark $mantledark
+client.urgent           $red $red $ghost $yellow $yellow
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -526,27 +538,26 @@ bar {
   font pango: IntoneMono Nerd Font Mono 14
   status_command i3blocks -c ~/.config/i3/i3blocks.conf
   position top
-#	    	i3bar_command i3bar --transparency
-# it could be that you have no primary display set: set one (xrandr --output <output> --primary)
-# reference: https://i3wm.org/docs/userguide.html#_tray_output
+  #	    	i3bar_command i3bar --transparency
+  # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
+  # reference: https://i3wm.org/docs/userguide.html#_tray_output
   tray_output none
   tray_padding 1
 
-# When strip_workspace_numbers is set to yes,
-# any workspace that has a name of the form
-# “[n][:][NAME]” will display only the name.
+  # When strip_workspace_numbers is set to yes,
+  # any workspace that has a name of the form
+  # “[n][:][NAME]” will display only the name.
   strip_workspace_numbers yes
-##strip_workspace_name no
 
   colors {
-    separator          $purple
-    background         $darkgrey
-    statusline         $white
-#                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+    separator          $lavender
+    background         $basedark
+    statusline         $ghost
+    #                 border    bg        txt
+		focused_workspace $basedark $basedark $sapphire
+		active_workspace $basedark $basedark $sapphire
+		inactive_workspace $basedark $basedark $ghost
+		urgent_workspace $basedark $basedark $red
 	}
 }
 
