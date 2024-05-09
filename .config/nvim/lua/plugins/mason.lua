@@ -7,6 +7,7 @@ return {
         "haskell-language-server",
         "lua-language-server",
         "phpactor",
+        "phpcs",
         "php-cs-fixer",
         "prettier",
         "python-lsp-server",
