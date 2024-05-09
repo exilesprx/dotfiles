@@ -14,7 +14,6 @@ return {
         "shellcheck",
         "shfmt",
         "vue-language-server",
-        "zls",
       },
     },
   },
