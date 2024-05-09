@@ -7,11 +7,4 @@ return {
       flavour = "mocha",
     },
   },
-  {
-    "navarasu/onedark.nvim",
-    opts = {
-      style = "warm",
-      transparent = true,
-    },
-  },
 }
