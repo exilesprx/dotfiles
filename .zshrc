@@ -8,6 +8,7 @@ alias welcome='eos-welcome --once'
 alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
 alias cat='bat'
 alias grep='batgrep'
+alias tmux='TERM=xterm-256color tmux'
 
 # Exports
 export TERM="xterm-256color"
