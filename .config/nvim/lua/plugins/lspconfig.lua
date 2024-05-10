@@ -7,6 +7,7 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       lspconfig.zls.setup({
+        type = "zls",
         cmd = { "zls" },
       })
     end,
