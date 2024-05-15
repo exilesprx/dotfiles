@@ -4,7 +4,7 @@ return {
     opts = {
       inlay_hints = { enabled = true },
     },
-    config = function()
+    init = function()
       local lspconfig = require("lspconfig")
       lspconfig.zls.setup({
         type = "zls",
