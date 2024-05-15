@@ -8,3 +8,7 @@ import = [
 [window]
 opacity = 0.9
 blur = true
+
+[env]
+TERM = "xterm-256color"
+
