@@ -10,7 +10,6 @@ return {
         "phpcs",
         "php-cs-fixer",
         "prettier",
-        "python-lsp-server",
         "stylua",
         "shellcheck",
         "shfmt",
