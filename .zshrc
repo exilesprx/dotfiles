@@ -30,6 +30,12 @@ setopt appendhistory
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# tmuxifier
+if [[ -d "$HOME/.tmux/plugins/tmuxifier/bin" ]]; then
+  PATH=$PATH:"$HOME/.tmux/plugins/tmuxifier/bin"
+  eval "$(tmuxifier init -)"
+fi
+
 # Starship
 eval "$(starship init zsh)"
 
