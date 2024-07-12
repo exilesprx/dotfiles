@@ -15,6 +15,7 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export VISUAL="gedit"
 export MANPAGER="nvim +Man!"
+export ZIM_HOME="$HOME/.zim"
 
 # Ghcup
 if [ -f "/home/acampbell/.ghcup/env" ]; then
@@ -29,12 +30,6 @@ setopt appendhistory
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
-
-# tmuxifier
-if [[ -d "$HOME/.tmux/plugins/tmuxifier/bin" ]]; then
-  PATH=$PATH:"$HOME/.tmux/plugins/tmuxifier/bin"
-  eval "$(tmuxifier init -)"
-fi
 
 # Starship
 eval "$(starship init zsh)"
@@ -56,27 +51,14 @@ elif [ "$SSH_AUTH_SOCK" ] && [ "$agent_run_state" = 1 ]; then
 fi
 unset env
 
-# Use modern completion
-autoload -Uz compinit
-compinit
- 
-# zplug - manage plugins
-source ~/.zplug/init.zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
-zplug "junegunn/fzf"
-
-# zplug - install/load new plugins when zsh is started or reloaded
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+# Zim
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
 fi
-zplug load
+# Initialize modules.
+if [ -f "$ZIM_HOME/init.zsh" ]; then
+  source ${ZIM_HOME}/init.zsh
+fi
 
 # Zoxide - should be called after compinit
 if [ -f "$HOME/.local/bin/zoxide" ]; then
