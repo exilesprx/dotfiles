@@ -65,3 +65,12 @@ if [ -f "$HOME/.local/bin/zoxide" ]; then
   export PATH=$PATH:$HOME/.local/bin
   eval "$(zoxide init zsh)"
 fi
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/acampbell/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
