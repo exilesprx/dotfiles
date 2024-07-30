@@ -27,6 +27,21 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
   },
+  pkg = {
+    enabled = true,
+    cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
+    -- the first package source that is found for a plugin will be used.
+    sources = {
+      "lazy",
+      "rockspec", -- will only be used when rocks.enabled is true
+      "packspec",
+    },
+  },
+  rocks = {
+    enabled = true,
+    root = vim.fn.stdpath("data") .. "/lazy-rocks",
+    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+  },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
