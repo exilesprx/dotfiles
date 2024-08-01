@@ -11,10 +11,10 @@ return {
     opts = {
       adapters = {
         "neotest-zig",
+        "neotest-haskell",
         ["neotest-python"] = {
           runner = "pytest",
         },
-        "neotest-haskell",
       },
     },
   },
