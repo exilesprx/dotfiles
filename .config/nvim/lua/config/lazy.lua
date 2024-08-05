@@ -28,7 +28,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   pkg = {
-    enabled = true,
+    enabled = false,
     cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
     -- the first package source that is found for a plugin will be used.
     sources = {
