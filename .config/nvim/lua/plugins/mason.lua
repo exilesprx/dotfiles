@@ -3,7 +3,6 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "black",
         "elixir-ls",
         "haskell-language-server",
         "lua-language-server",

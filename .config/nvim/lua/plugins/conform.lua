@@ -14,7 +14,7 @@ return {
       ["lua"] = { "stylua" },
       ["markdown"] = { "prettier" },
       ["php"] = { "phpcs" },
-      ["python"] = { "black" },
+      ["python"] = { "ruff" },
       ["typescript"] = { "prettier" },
       ["sh"] = { "shfmt" },
       ["vue"] = { "prettier" },
