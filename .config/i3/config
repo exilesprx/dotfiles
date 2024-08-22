@@ -304,7 +304,7 @@ bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profiles
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-set $ws4 "4:󰨞"
+set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6:"
 set $ws7 "7:󰦭"
@@ -327,7 +327,7 @@ assign [class="(?i)firefox"] $ws2
 assign [class="Google-chrome"] $ws2
 assign [class="Thorium-browser"] $ws2
 assign [class="Thunar"] $ws3
-assign [class="Code"] $ws4
+assign [class="Slack"] $ws4
 assign [class ="jetbrains-phpstorm"] $ws5
 assign [class ="jetbrains-pycharm-ce"] $ws6
 assign [class ="jetbrains-toolbox"] $ws7
@@ -344,7 +344,7 @@ for_window [class=Thorium-browser] focus
 for_window [class=Thunar] focus
 for_window [class=Thunderbird] focus
 for_window [class=TelegramDesktop] focus
-for_window [class=Code] focus
+for_window [class=Slack] focus
 for_window [class=Spotify] focus
 for_window [class=jetbrains-phpstorm] focus
 for_window [class=jetbrains-toolbox] focus
