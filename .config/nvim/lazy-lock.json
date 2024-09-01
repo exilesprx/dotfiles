@@ -33,7 +33,7 @@
   "neo-tree.nvim": { "branch": "main", "commit": "206241e451c12f78969ff5ae53af45616ffc9b72" },
   "neotest": { "branch": "master", "commit": "6d6ad113f56edc7c3f2a77a0836ea8c1b955ebea" },
   "neotest-elixir": { "branch": "master", "commit": "c5067bcc3ec6a0bba7b5694fa15aeb17f16aeb3c" },
-  "neotest-haskell": { "branch": "master", "commit": "10cd953fb7c81de82ce8dc618e0614e0ab5fa1e3" },
+  "neotest-haskell": { "branch": "master", "commit": "aa5f08bb3f5bdf8c2bdf834924a6ade88775cfc4" },
   "neotest-python": { "branch": "master", "commit": "72603dfdbaad5695160268cb10531a14cc37236e" },
   "neotest-zig": { "branch": "main", "commit": "db005bb679796655d375d25f404feffd00bee7f3" },
   "noice.nvim": { "branch": "main", "commit": "448bb9c524a7601035449210838e374a30153172" },
