@@ -412,10 +412,7 @@ exec --no-startup-id dex --autostart --environment i3
 #exec_always --no-startup-id conky
 
 # start a script to setup displays
-# single monitor
-# exec --no-startup-id ~/.screenlayout/monitor.sh
-# dual monitors
-exec --no-startup-id ~/.screenlayout/dual-screen.sh
+exec --no-startup-id ~/.screenlayout/monitor-setup.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
