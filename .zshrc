@@ -17,6 +17,13 @@ export VISUAL="gedit"
 export MANPAGER="nvim +Man!"
 export ZIM_HOME="$HOME/.zim"
 
+# fnm
+FNM_PATH="/home/acampbell/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/acampbell/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+
 # Ghcup
 if [ -f "/home/acampbell/.ghcup/env" ]; then
   source "/home/acampbell/.ghcup/env" # ghcup-env
@@ -74,3 +81,4 @@ path=('/home/acampbell/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+
