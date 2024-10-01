@@ -1,24 +1,38 @@
-user: 159                           # cyan
-group: 231                          # foreground
+user: 245                           # Rosewater (#f5e0dc)
+group: 110                          # Sky (#89dceb)
 permission:
-  read: 183                         # blue
-  write: 212                        # magenta
-  exec: 159                         # cyan
-  exec-sticky: 159                  # cyan
-  no-access: 210                    # red
+  read: 109                         # Teal (#94e2d5)
+  write: 172                        # Red (#f38ba8)
+  exec: 110                         # Sky (#89dceb)
+  exec-sticky: 5                    # Bold (kept as is)
+  no-access: 245                    # Rosewater (#f5e0dc)
+  octal: 6                          # Cyan (default)
+  acl: 175                          # Pink (#f5c2e7)
+  context: 140                      # Light Green (#a6e3a1)
 date:
-  hour-old: 146                     # comment 20% lighter
-  day-old: 103                      # comment
-  older: 60                         # current line
+  hour-old: 110                     # Sky (#89dceb)
+  day-old: 109                      # Teal (#94e2d5)
+  older: 245                        # Rosewater (#f5e0dc)
 size:
-  none: 60                          # current line
-  small: 120                        # green
-  medium: 222                       # orange
-  large: 210                        # red
+  none: 245                         # Rosewater (#f5e0dc)
+  small: 216                        # Flamingo (#f2cdcd)
+  medium: 229                       # Yellow (#f9e2af)
+  large: 172                        # Red (#f38ba8)
 inode:
-  valid: 231                        # foreground
-  invalid: 210                      # red
+  valid: 110                        # Sky (#89dceb)
+  invalid: 245                      # Rosewater (#f5e0dc)
 links:
-  valid: 159                        # cyan
-  invalid: 210                      # red
-tree-edge: 183                      # blue
+  valid: 110                        # Sky (#89dceb)
+  invalid: 245                      # Rosewater (#f5e0dc)
+tree-edge: 245                      # Rosewater (#f5e0dc)
+git-status:
+  default: 245                      # Rosewater (#f5e0dc)
+  unmodified: 245                   # Rosewater (#f5e0dc)
+  ignored: 245                      # Rosewater (#f5e0dc)
+  new-in-index: 114                 # Green (#a6e3a1)
+  new-in-workdir: 110               # Sky (#89dceb)
+  typechange: 172                   # Red (#f38ba8)
+  deleted: 172                      # Red (#f38ba8)
+  renamed: 114                      # Green (#a6e3a1)
+  modified: 229                     # Yellow (#f9e2af)
+  conflicted: 172                   # Red (#f38ba8)
