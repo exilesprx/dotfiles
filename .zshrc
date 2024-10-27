@@ -30,6 +30,15 @@ if [ -f "/home/acampbell/.ghcup/env" ]; then
   source "/home/acampbell/.ghcup/env" # ghcup-env
 fi
 
+# goenv
+if [ -d "/opt/goenv" ]; then
+  export GOENV_ROOT="/opt/goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$GOROOT/bin:$PATH"
+  export PATH="$PATH:$GOPATH/bin"
+fi
+
 # History for zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
