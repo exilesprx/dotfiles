@@ -1,18 +1,19 @@
-[user]
-	email = exiles.prx@gmail.com
-	name = Exiles.prx
-	signingKey = /home/acampbell/.ssh/id_ed25519.pub
+[alias]
+  cb = rev-parse --abbrev-ref HEAD
+  pfwl = push --force-with-lease
+  rom = rebase -i origin/main
+  undo = reset --soft HEAD^
+[commit]
+	gpgsign = true
 [core]
 	editor = nvim
+[gpg]
+	format = ssh
 [init]
 	defaultBranch = main
 [rerere]
 	enabled = true
-[gpg]
-	format = ssh
-[commit]
-	gpgsign = true
-[alias]
-  cb = rev-parse --abbrev-ref HEAD
-  rom = rebase -i origin/main
-  undo = reset --soft HEAD^
+[user]
+	email = exiles.prx@gmail.com
+	name = Exiles.prx
+	signingKey = /home/acampbell/.ssh/id_ed25519.pub
