@@ -11,6 +11,10 @@
 	format = ssh
 [init]
 	defaultBranch = main
+[merge]
+  tool = "lazygit"
+[mergetool "lazygit"]
+  cmd = "lazygit"
 [rerere]
 	enabled = true
 [user]
