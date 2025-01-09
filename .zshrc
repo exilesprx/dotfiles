@@ -9,6 +9,7 @@ alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
 alias cat='bat'
 alias grep='batgrep'
 alias clr='clear'
+alias zel='zellij'
 
 # Exports
 export TERM="xterm-256color"
@@ -18,16 +19,21 @@ export MANPAGER="nvim +Man!"
 export ZIM_HOME="$HOME/.zim"
 export LS_COLORS="di=38;5;146:fi=38;5;245:ln=38;5;141:pi=38;5;223:so=38;5;167:bd=38;5;167:cd=38;5;167:or=38;5;174:ow=38;5;109:st=38;5;245:su=38;5;167:sg=38;5;142:tw=38;5;109:ex=38;5;215"
 
+# cargo/rust
+if [ -d "$HOME/.cargo/bin" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 # fnm
-FNM_PATH="/home/acampbell/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/acampbell/.local/share/fnm:$PATH"
+  export PATH="$HOME/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
 
 # Ghcup
-if [ -f "/home/acampbell/.ghcup/env" ]; then
-  source "/home/acampbell/.ghcup/env" # ghcup-env
+if [ -f "$HOME/.ghcup/env" ]; then
+  source "$HOME/.ghcup/env" # ghcup-env
 fi
 
 # goenv
