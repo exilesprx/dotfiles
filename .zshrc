@@ -84,8 +84,7 @@ if [ -f "$ZIM_HOME/init.zsh" ]; then
 fi
 
 # Zoxide - should be called after compinit
-if [ -f "$HOME/.local/bin/zoxide" ]; then
-  export PATH=$PATH:$HOME/.local/bin
+if [ -f "$HOME/.cargo/bin/zoxide" ]; then
   eval "$(zoxide init zsh)"
 fi
 
