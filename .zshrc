@@ -25,9 +25,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 # fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
+if [ -f "$HOME/.cargo/bin/fnm" ]; then
   eval "`fnm env`"
 fi
 
