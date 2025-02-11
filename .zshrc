@@ -19,6 +19,16 @@ export MANPAGER="nvim +Man!"
 export ZIM_HOME="$HOME/.zim"
 export LS_COLORS="di=38;5;146:fi=38;5;245:ln=38;5;141:pi=38;5;223:so=38;5;167:bd=38;5;167:cd=38;5;167:or=38;5;174:ow=38;5;109:st=38;5;245:su=38;5;167:sg=38;5;142:tw=38;5;109:ex=38;5;215"
 
+# History for zsh
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+
+# Custom key binds
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # cargo/rust
 if [ -d "$HOME/.cargo/bin" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
@@ -42,15 +52,6 @@ if [ -d "/opt/goenv" ]; then
   export PATH="$GOROOT/bin:$PATH"
   export PATH="$PATH:$GOPATH/bin"
 fi
-
-# History for zsh
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
 
 # Starship
 eval "$(starship init zsh)"
