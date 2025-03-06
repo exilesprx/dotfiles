@@ -10,6 +10,8 @@ alias cat='bat'
 alias grep='batgrep'
 alias clr='clear'
 alias zel='zellij'
+alias dotz='stow --dotfiles --target=$HOME'
+alias cd='zoxide'
 
 # Exports
 export TERM="xterm-256color"
