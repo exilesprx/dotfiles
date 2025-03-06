@@ -7,10 +7,18 @@
 	gpgsign = true
 [core]
 	editor = nvim
+  pager = delta
+[delta]
+  navigate = true
+  dark = true
+  side-by-side = true
+  line-numbers = true
 [gpg]
 	format = ssh
 [init]
 	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
 [merge]
   tool = "lazygit"
 [mergetool "lazygit"]
