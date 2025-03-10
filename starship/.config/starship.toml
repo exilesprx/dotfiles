@@ -1,9 +1,9 @@
 palette = "catppuccin_mocha"
 
 [character]
-success_symbol = "[[❯](green)](maroon)"
-error_symbol = "[❯](red)"
-vimcmd_symbol = "[❮](green)"
+success_symbol = "[[❯](lavender)](maroon)"
+error_symbol = "[❯](flamingo)"
+vimcmd_symbol = "[❮](rosewater)"
 
 [aws]
 symbol = "  "
