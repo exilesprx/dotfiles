@@ -3,22 +3,23 @@
   pfwl = push --force-with-lease
   rom = rebase -i origin/main
   undo = reset --soft HEAD^
+  tagsort = "!git tag | tr '-' '~' | sort -V | tr '~' '-'"
 [commit]
-	gpgsign = true
+  gpgsign = true
 [core]
-	editor = nvim
+  editor = nvim
   pager = delta
 [delta]
   navigate = true
   side-by-side = true
   line-numbers = true
-	features = catppuccin-mocha
+  features = catppuccin-mocha
 [gpg]
-	format = ssh
+  format = ssh
 [include]
-	path = ~/.config/delta/themes/catppuccin.gitconfig
+  path = ~/.config/delta/themes/catppuccin.gitconfig
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [interactive]
   diffFilter = delta --color-only
 [merge]
@@ -26,8 +27,8 @@
 [mergetool "lazygit"]
   cmd = "lazygit"
 [rerere]
-	enabled = true
+  enabled = true
 [user]
-	email = exiles.prx@gmail.com
-	name = Exiles.prx
-	signingKey = /home/acampbell/.ssh/id_ed25519.pub
+  email = exiles.prx@gmail.com
+  name = Exiles.prx
+  signingKey = /home/acampbell/.ssh/id_ed25519.pub
