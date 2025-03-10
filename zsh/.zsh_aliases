@@ -4,7 +4,7 @@
 alias ls='eza --icons=always --color=always'
 alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show long listing of all except ".."
 alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
-alias lt='eza --icons=always --color=always --tree'
+alias lt='eza --icons=always --color=always --tree --level 1'
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias welcome='eos-welcome --once'
