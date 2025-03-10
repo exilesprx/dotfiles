@@ -1,24 +1,3 @@
-## Aliases
-alias ls='eza --icons=always --color=always'
-alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show long listing of all except ".."
-alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
-alias vim='nvim'
-alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias welcome='eos-welcome --once'
-alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
-alias cat='bat'
-alias grep='batgrep'
-alias zel='zellij'
-alias cd='z'
-
-# Exports
-export TERM="xterm-256color"
-export EDITOR="nvim"
-export VISUAL="gedit"
-export MANPAGER="nvim +Man!"
-export ZIM_HOME="$HOME/.zim"
-export LS_COLORS="di=38;5;146:fi=38;5;245:ln=38;5;141:pi=38;5;223:so=38;5;167:bd=38;5;167:cd=38;5;167:or=38;5;174:ow=38;5;109:st=38;5;245:su=38;5;167:sg=38;5;142:tw=38;5;109:ex=38;5;215"
-
 # History for zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -28,6 +7,9 @@ setopt appendhistory
 # Custom key binds
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+[ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
+[ -f "$HOME/.zsh_exports" ] && source "$HOME/.zsh_exports"
 
 # cargo/rust
 if [ -d "$HOME/.cargo/bin" ]; then
@@ -54,7 +36,9 @@ if [ -d "/opt/goenv" ]; then
 fi
 
 # Starship
-eval "$(starship init zsh)"
+if [ -f "$HOME/.cargo/bin/starship" ]; then
+  eval "$(starship init zsh)"
+fi
 
 # SSH key
 env=~/.ssh/agent.env
