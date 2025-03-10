@@ -10,11 +10,13 @@
   pager = delta
 [delta]
   navigate = true
-  dark = true
   side-by-side = true
   line-numbers = true
+	features = catppuccin-mocha
 [gpg]
 	format = ssh
+[include]
+	path = ~/.config/delta/themes/catppuccin.gitconfig
 [init]
 	defaultBranch = main
 [interactive]
