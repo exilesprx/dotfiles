@@ -1,17 +1,15 @@
 ## Aliases
-alias ls='lsd'
-alias ll='lsd -lav --ignore-glob ".."'   # show long listing of all except ".."
-alias l='lsd -lav --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
+alias ls='eza --icons=always --color=always'
+alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show long listing of all except ".."
+alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
 alias vim='nvim'
 alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias welcome='eos-welcome --once'
 alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
 alias cat='bat'
 alias grep='batgrep'
-alias clr='clear'
 alias zel='zellij'
-alias dotz='stow --dotfiles --target=$HOME'
-alias cd='zoxide'
+alias cd='z'
 
 # Exports
 export TERM="xterm-256color"
