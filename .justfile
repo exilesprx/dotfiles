@@ -1,34 +1,41 @@
 set shell := ["bash", "-c"]
+set ignore-comments
 
-TARGET_DIR := "$HOME"
+target := "$HOME"
 
 default: help
 
 help:
   @echo "Commands to stow and unstow dotfiles"
 
+# Using the --adopt flag to avoid conflicts with existing files
+# Any existing files will be adopted into the package and when
+# used with git, allows a comparison inside the stow package
+# which the differences can either be kept or discarded.
+
 stow-all:
   @for dir in $(find . -mindepth 1 -maxdepth 1 -type d ! -name ".git"); do \
-    stow -v --target={{TARGET_DIR}} $(basename "$dir"); \
+    stow -v --adopt --target={{target}} $(basename "$dir"); \
   done
 
-[confirm('Are you sure you want to delete all the files? y/n')]
+[confirm('Are you sure you want to delete the package? y/n')]
 unstow-all:
   @for dir in $(find . -mindepth 1 -maxdepth 1 -type d ! -name ".git"); do \
-    stow -v --delete --target={{TARGET_DIR}} $(basename "$dir"); \
+    stow -v --delete --target={{target}} $(basename "$dir"); \
   done
 
-[confirm('Are you sure you want to restow all the files? y/n')]
+[confirm('Are you sure you want to restow the package? y/n')]
 restow-all:
   @for dir in $(find . -mindepth 1 -maxdepth 1 -type d ! -name ".git"); do \
-    stow -v --restow --target={{TARGET_DIR}} $(basename "$dir"); \
+    stow -v --adopt --restow --target={{target}} $(basename "$dir"); \
   done
 
-stow PACKAGE:
-  stow -v --target={{TARGET_DIR}} {{PACKAGE}}
+stow package:
+  stow -v --adopt --target={{target}} {{package}}
 
-unstow PACKAGE:
-  stow -v --delete --target={{TARGET_DIR}} {{PACKAGE}}
+[confirm('Are you sure you want to unstow the package? y/n')]
+unstow package:
+  stow -v --delete --target={{target}} {{package}}
 
 stow-libinput:
-  stow -v --target=/usr/share/X11/xorg.conf.d/ x11
+  stow -v --adopt --target=/usr/share/X11/xorg.conf.d/ x11
