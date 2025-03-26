@@ -36,7 +36,9 @@ if [ -d "/opt/goenv" ]; then
 fi
 
 # Starship
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi
 
 # SSH key
 env=~/.ssh/agent.env
