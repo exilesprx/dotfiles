@@ -6,7 +6,6 @@ alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show lon
 alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
 alias lt='eza --icons=always --color=always --tree --level 1'
 alias vim='nvim'
-alias dots='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias welcome='eos-welcome --once'
 alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
 alias cat='bat'
