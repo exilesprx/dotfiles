@@ -309,7 +309,7 @@ set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
-set $ws5 "5:"
+set $ws5 "5:󰅩"
 set $ws6 "6:"
 set $ws7 "7:󰦭"
 set $ws8 "8:"
@@ -333,6 +333,7 @@ assign [class="Thorium-browser"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Slack"] $ws4
 assign [class ="jetbrains-phpstorm"] $ws5
+assign [class ="code-oss"] $ws5
 assign [class ="jetbrains-pycharm-ce"] $ws6
 assign [class ="jetbrains-toolbox"] $ws7
 assign [class="thunderbird"] $ws8
@@ -351,6 +352,7 @@ for_window [class=TelegramDesktop] focus
 for_window [class=Slack] focus
 for_window [class=Spotify] focus
 for_window [class=jetbrains-phpstorm] focus
+for_window [class=code-oss] focus
 for_window [class=jetbrains-toolbox] focus
 for_window [class=jetbrains-pycharm-ce] focus
 for_window [class=Gimp-2.10] focus
