@@ -17,7 +17,7 @@ if [ -d "$HOME/.cargo/bin" ]; then
 fi
 
 # fnm
-if [ -f "$HOME/.cargo/bin/fnm" ]; then
+if command -v fnm &> /dev/null; then
   eval "`fnm env`"
 fi
 
@@ -67,7 +67,7 @@ if [ -f "$ZIM_HOME/init.zsh" ]; then
 fi
 
 # Zoxide - should be called after compinit
-if [ -f "$HOME/.cargo/bin/zoxide" ]; then
+if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
