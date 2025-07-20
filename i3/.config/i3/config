@@ -293,6 +293,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec prime-run /usr/bin/google-chrome-stable
+bindsym $mod+Shift+w exec /usr/bin/google-chrome-stable
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec flameshot gui
 
