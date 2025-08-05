@@ -5,7 +5,6 @@ return {
       ensure_installed = {
         "bash",
         "elixir",
-        "haskell",
         "html",
         "javascript",
         "json",

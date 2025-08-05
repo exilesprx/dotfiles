@@ -4,7 +4,6 @@ return {
     opts = {
       ensure_installed = {
         "elixir-ls",
-        "haskell-language-server",
         "lua-language-server",
         "phpactor",
         "phpcs",
