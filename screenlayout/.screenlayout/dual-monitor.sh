@@ -9,7 +9,9 @@
 
 set -eu
 
-want_mode=1920x1080
+# Desired internal resolution and preferred refresh (override with WANT_MODE / WANT_REFRESH)
+want_mode=${WANT_MODE:-1920x1080}
+want_refresh=${WANT_REFRESH:-60}
 
 # 1. Internal panel
 internal=$(xrandr --query | awk '/ connected primary/{print $1; exit}')
@@ -28,12 +30,9 @@ if [ -z "$external" ]; then
        exec xrandr --output "$internal" --primary --auto
 fi
 
-# Function to pick a mode
-pick_mode() {
+pick_internal_mode() {
        out="$1"
-       # Isolate that output's block
        block=$(xrandr --query | sed -n "/^$out connected/,/^[^[:space:]]/p")
-       # Collect mode list (first column of indented lines)
        modes=$(printf '%s\n' "$block" | awk '/^[[:space:]]/{print $1}')
        if printf '%s\n' "$modes" | grep -qx "$want_mode"; then
               echo "$want_mode"; return 0
@@ -42,28 +41,32 @@ pick_mode() {
        if [ -n "$star" ]; then
               echo "$star"; return 0
        fi
-       # first mode
        printf '%s\n' "$modes" | head -n1
 }
 
-mode_int=$(pick_mode "$internal")
-mode_ext=$(pick_mode "$external")
-if [ -z "$mode_int" ] || [ -z "$mode_ext" ]; then
-       echo "Failed to resolve modes (internal=$mode_int external=$mode_ext)" >&2
+mode_int=$(pick_internal_mode "$internal")
+if [ -z "$mode_int" ]; then
+       echo "Failed to resolve internal mode" >&2
        exit 1
 fi
 
 int_width=${mode_int%x*}
 pos_ext="${int_width}x0"
 
-echo "Configuring internal=$internal($mode_int) external=$external($mode_ext)" >&2
-PRIMARY_CMD="xrandr --output $internal --primary --mode $mode_int --pos 0x0 --rotate normal --output $external --mode $mode_ext --pos $pos_ext --rotate normal"
+refresh_flag_int=""
+if [ -n "$want_refresh" ]; then
+       block_int=$(xrandr --query | sed -n "/^$internal connected/,/^[^[:space:]]/p")
+       if printf '%s\n' "$block_int" | awk -v m="$mode_int" -v r="$want_refresh" '($1==m){for(i=2;i<=NF;i++) if ($i ~ r) f=1} END{exit f?0:1}'; then
+              refresh_flag_int="--rate $want_refresh"
+       fi
+fi
+
+echo "Configuring internal=$internal($mode_int${refresh_flag_int:+ @${want_refresh}Hz}) external=$external(auto)" >&2
+PRIMARY_CMD="xrandr --output $internal --primary --mode $mode_int $refresh_flag_int --pos 0x0 --rotate normal --output $external --auto --pos $pos_ext --rotate normal"
 echo "Running: $PRIMARY_CMD" >&2
 if ! eval "$PRIMARY_CMD"; then
-       echo "Primary xrandr command failed; attempting fallback with --auto." >&2
-       FALLBACK_CMD="xrandr --output $internal --primary --mode $mode_int --pos 0x0 --rotate normal --output $external --auto --pos $pos_ext --rotate normal"
-       echo "Running: $FALLBACK_CMD" >&2
-       eval "$FALLBACK_CMD" || true
+       echo "Primary xrandr command failed; retrying once." >&2
+       eval "$PRIMARY_CMD" || true
 fi
 
 # Small wait to allow link training
@@ -79,7 +82,7 @@ else
        (command -v xset >/dev/null 2>&1 && xset dpms force on) || true
 fi
 
-echo "Dual monitor configuration applied (internal: $mode_int, external: $mode_ext)."
+echo "Dual monitor configuration applied (internal: $mode_int${refresh_flag_int:+ @${want_refresh}Hz}, external: auto)."
 
 # Optional: set per‑monitor wallpapers to avoid a stretched single image.
 # Define WALLPAPER_INT and WALLPAPER_EXT environment variables before calling the script, e.g.:
@@ -90,4 +93,3 @@ if command -v feh >/dev/null 2>&1; then
               feh --no-fehbg --bg-fill "$WALLPAPER_INT" "$WALLPAPER_EXT" || true
        fi
 fi
-       # Fallback: first mode
