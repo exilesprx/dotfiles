@@ -24,7 +24,7 @@ fi
 # 2. External (any other connected)
 external=$(xrandr --query | awk -v i="$internal" '/ connected/ {if ($1!=i) print $1}' | head -n1 || true)
 if [ -z "$external" ]; then
-       echo "No external display; reverting to single display on $internal" >&2
+       echo "No external display detected; single-monitor only." >&2
        exec xrandr --output "$internal" --primary --auto
 fi
 
@@ -57,11 +57,29 @@ int_width=${mode_int%x*}
 pos_ext="${int_width}x0"
 
 echo "Configuring internal=$internal($mode_int) external=$external($mode_ext)" >&2
-xrandr \
-       --output "$internal" --primary --mode "$mode_int" --pos 0x0 --rotate normal \
-       --output "$external" --mode "$mode_ext" --pos "$pos_ext" --rotate normal
+PRIMARY_CMD="xrandr --output $internal --primary --mode $mode_int --pos 0x0 --rotate normal --output $external --mode $mode_ext --pos $pos_ext --rotate normal"
+echo "Running: $PRIMARY_CMD" >&2
+if ! eval "$PRIMARY_CMD"; then
+       echo "Primary xrandr command failed; attempting fallback with --auto." >&2
+       FALLBACK_CMD="xrandr --output $internal --primary --mode $mode_int --pos 0x0 --rotate normal --output $external --auto --pos $pos_ext --rotate normal"
+       echo "Running: $FALLBACK_CMD" >&2
+       eval "$FALLBACK_CMD" || true
+fi
 
-echo "Dual monitor configuration applied successfully (internal: $mode_int, external: $mode_ext)."
+# Small wait to allow link training
+sleep 0.4
+
+# Verify external became active (has geometry)
+XR_NOW=$(xrandr --query | awk -v E="$external" '$1==E {print}')
+if printf '%s' "$XR_NOW" | grep -q '+[0-9]\++[0-9]\+'; then
+       echo "External $external active." >&2
+else
+       echo "External $external still no geometry; forcing --auto and DPMS on." >&2
+       xrandr --output "$external" --auto --pos "$pos_ext" --rotate normal || true
+       (command -v xset >/dev/null 2>&1 && xset dpms force on) || true
+fi
+
+echo "Dual monitor configuration applied (internal: $mode_int, external: $mode_ext)."
 
 # Optional: set per‑monitor wallpapers to avoid a stretched single image.
 # Define WALLPAPER_INT and WALLPAPER_EXT environment variables before calling the script, e.g.:
