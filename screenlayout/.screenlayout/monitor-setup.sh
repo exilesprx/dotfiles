@@ -15,3 +15,8 @@ elif [ "$monitor_count" -eq 2 ]; then
 else
   echo "No configuration for this setup"
 fi
+
+# Apply wallpapers dynamically (non-blocking) if script present
+if [ -x "$HOME/.screenlayout/set-wallpaper.sh" ]; then
+  ( "$HOME/.screenlayout/set-wallpaper.sh" & )
+fi
