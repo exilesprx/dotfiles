@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "main", "commit": "f7bb32dbbe2ff5e26f5033e2142b5920cf427236" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "3496a487caf5776f33617648e06bf641f49d09fc" },
   "LazyVim": { "branch": "main", "commit": "25abbf546d564dc484cf903804661ba12de45507" },
   "blink-cmp-copilot": { "branch": "main", "commit": "439cff78780c033aa23cf061d7315314b347e3c1" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
@@ -27,7 +27,7 @@
   "neogit": { "branch": "master", "commit": "aec66c46c132a019296e9e73a2ef6d753bf15563" },
   "neotest": { "branch": "master", "commit": "35a59c1f59dbb954d92b74ab64a966a668cea495" },
   "neotest-elixir": { "branch": "master", "commit": "a242aebeaa6997c1c149138ff77f6cacbe33b6fc" },
-  "neotest-golang": { "branch": "main", "commit": "e892eeb585f8bb041eb50e9fc58d6d48f62c3717" },
+  "neotest-golang": { "branch": "main", "commit": "fa49d01f28ccb6262914f344a831eec8855e57f1" },
   "neotest-python": { "branch": "master", "commit": "ed9b4d794b89044cc32e5476e637936331473c6e" },
   "neotest-zig": { "branch": "main", "commit": "de63f3b9a182d374d2e71cf44385326682ec90e7" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
