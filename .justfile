@@ -25,3 +25,8 @@ stow-libinput:
 
 stow-tlp:
   stow -v --adopt --target=/etc/tlp.d/ tlp
+
+stow-code-launcher:
+  # update the code.desktop file to point to the this
+  # script so variables are set correctly
+  stow -v --adopt --target={{target}}/.vscode vscode
