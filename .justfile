@@ -26,7 +26,26 @@ stow-libinput:
 stow-tlp:
   stow -v --adopt --target=/etc/tlp.d/ tlp
 
+# update the code.desktop file to point to the this
+# script so variables are set correctly
 stow-code-launcher:
-  # update the code.desktop file to point to the this
-  # script so variables are set correctly
+  #!/usr/bin/sh
+  home="$HOME"
   stow -v --adopt --target={{target}}/.vscode vscode
+  # ensure the launcher is executable
+  chmod +x "{{target}}/.vscode/code-launcher.sh" || true
+  # place a user override for the desktop entry and update Exec= to use the launcher
+  desktop_dir="$home/.local/share/applications"
+  desktop_file="$desktop_dir/code.desktop"
+  mkdir -p "$desktop_dir"
+  if [ ! -f "$desktop_file" ]; then
+    if [ -f "/usr/share/applications/code.desktop" ]; then
+      install -m 0644 "/usr/share/applications/code.desktop" "$desktop_file"
+    else
+      echo "code.desktop not found in /usr/share/applications; skipping Exec replacement." >&2
+      exit 0
+    fi
+  fi
+  # Replace only Exec lines that invoke /usr/bin/code, keep args intact
+  sed -E -i "s#^([[:space:]]*Exec=)/usr/bin/code([[:space:]]|$)#\\1$home/.vscode/code-launcher.sh\\2#g" "$desktop_file"
+  echo "Updated Exec entries in $desktop_file to use $home/.vscode/code-launcher.sh"
