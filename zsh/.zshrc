@@ -31,7 +31,9 @@ if [ -d "/opt/goenv" ]; then
   export GOENV_ROOT="/opt/goenv"
   export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
+fi
+
+if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
   export PATH="$PATH:$GOPATH/bin"
 fi
 
