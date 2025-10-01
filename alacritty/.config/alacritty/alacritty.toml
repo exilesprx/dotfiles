@@ -9,8 +9,9 @@ TERM = "xterm-256color"
 [general]
 import = [
   "/home/acampbell/.config/alacritty/font.toml",
+  "/home/acampbell/.config/alacritty/catppuccin-mocha.toml"
+  # Available themes:
   # "/home/acampbell/.config/alacritty/onedark.toml"
   #  "/home/acampbell/.config/alacritty/catppuccin-macchiato.toml"
-  "/home/acampbell/.config/alacritty/catppuccin-mocha.toml"
 ]
 
