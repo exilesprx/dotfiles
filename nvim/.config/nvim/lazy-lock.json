@@ -27,7 +27,7 @@
   "neogit": { "branch": "master", "commit": "90dcfa7b2bd5f3f35d1a7afe24dde9e2bc482cd4" },
   "neotest": { "branch": "master", "commit": "2cf3544fb55cdd428a9a1b7154aea9c9823426e8" },
   "neotest-elixir": { "branch": "master", "commit": "a242aebeaa6997c1c149138ff77f6cacbe33b6fc" },
-  "neotest-golang": { "branch": "main", "commit": "0ca3a5d42a78a8fc7b4eff41450f46dfb44475f6" },
+  "neotest-golang": { "branch": "main", "commit": "beb468cdb0549e1125b5eafd351035214b9fed3a" },
   "neotest-python": { "branch": "master", "commit": "7cab6e2ecc260bf61b97ca147574a470bd880cbd" },
   "neotest-zig": { "branch": "main", "commit": "de63f3b9a182d374d2e71cf44385326682ec90e7" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
