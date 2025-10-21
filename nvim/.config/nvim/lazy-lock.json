@@ -1,5 +1,5 @@
 {
-  "CopilotChat.nvim": { "branch": "main", "commit": "98435447243eb80a7c228b1447f14f3294d39739" },
+  "CopilotChat.nvim": { "branch": "main", "commit": "4d9256418ca276b294f3e00445aa0d6faec4c1ea" },
   "LazyVim": { "branch": "main", "commit": "a65d5d530d372b39a468dfbb2ce633f344770c5c" },
   "blink-copilot": { "branch": "main", "commit": "5d35fd07fcc148be20442da1bdd2407e03263d7d" },
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
@@ -49,12 +49,12 @@
   "oil.nvim": { "branch": "master", "commit": "7e1cd7703ff2924d7038476dcbc04b950203b902" },
   "persistence.nvim": { "branch": "main", "commit": "51eef57272742b773468949f6bd0503ec3f83874" },
   "plenary.nvim": { "branch": "master", "commit": "b9fd5226c2f76c951fc8ed5923d85e4de065e509" },
-  "snacks.nvim": { "branch": "main", "commit": "ad6cbc8d5d4b49c8030083c1f55fc7c3679f3ac4" },
+  "snacks.nvim": { "branch": "main", "commit": "92a08cece72aeb67cf2a527991cbffdab093db5e" },
   "todo-comments.nvim": { "branch": "main", "commit": "19d461ddd543e938eb22505fb03fa878800270b6" },
   "tokyonight.nvim": { "branch": "main", "commit": "e63c42a42b11cd6225f009dd949b9ee0fccc15ef" },
   "trouble.nvim": { "branch": "main", "commit": "c098362fe603d3922095e7db595961e020bdf2d0" },
   "ts-comments.nvim": { "branch": "main", "commit": "217ab9cc137fceb6659b53790bd25e608219abe1" },
-  "venv-selector.nvim": { "branch": "main", "commit": "52a6e930aa30f67a510358e5bee11a37985547c2" },
+  "venv-selector.nvim": { "branch": "main", "commit": "9d528643ab17795c69dc42ce018120c397a36f8b" },
   "which-key.nvim": { "branch": "main", "commit": "b4177e3eaf15fe5eb8357ebac2286d488be1ed00" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" }
 }
