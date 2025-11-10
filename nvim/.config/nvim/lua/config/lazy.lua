@@ -40,7 +40,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
   pkg = {
-    enabled = false,
+    enabled = true,
     cache = vim.fn.stdpath("state") .. "/lazy/pkg-cache.lua",
     -- the first package source that is found for a plugin will be used.
     sources = {
@@ -52,7 +52,12 @@ require("lazy").setup({
   rocks = {
     enabled = true,
     root = vim.fn.stdpath("data") .. "/lazy-rocks",
-    server = "https://nvim-neorocks.github.io/rocks-binaries/",
+    server = "https://lumen-oss.github.io/rocks-binaries/",
+    -- use hererocks to install luarocks?
+    -- set to `nil` to use hererocks when luarocks is not found
+    -- set to `true` to always use hererocks
+    -- set to `false` to always use luarocks
+    hererocks = nil,
   },
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
