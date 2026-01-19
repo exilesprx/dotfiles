@@ -37,6 +37,7 @@ terminal = "alacritty"
 menu = "rofi -show run"
 system_font = "IntoneMono Nerd Font Mono"
 home_dir = os.path.expanduser("~")
+logo = ""
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -100,12 +101,14 @@ keys = [
     Key([mod], "r", lazy.spawn(menu)),
 ]
 
-group_labels = ["", "", "", "", "", "", "", "", ""]
+group_labels = ["", "", "", "󰲦", "󰲨", "󰲪", "󰲬", "󰲮", "󰲰"]
 group_class_matches = [
     ["Alacritty"],
     ["firefox", "Chrome", "Brave"],
     ["Thunar"],
     [],  # TODO: figure out catch all for other windows
+    [],
+    [],
     [],
     [],
     [],
@@ -151,8 +154,8 @@ layout_theme = {
     "margin": 5,
     "font": system_font,
     "font_size": 14,
-    "border_focus": "#bd93f9",
-    "border_normal": "#555555",
+    "border_focus": "#f5e0dc",
+    "border_normal": "#1e1e2e",
 }
 
 colors = [
@@ -213,20 +216,23 @@ def diskspace(mode):
 
 def init_widgets_list():
     widgets = [
-        widget.Spacer(length=5, background=colors[1]),
-        widget.Image(
-            filename=f"{home_dir}/.config/qtile/logos/logo",
+        widget.TextBox(
+            font=system_font,
+            fontsize=24,
+            padding=12,
+            text=logo,
+            foreground=colors[9],
             background=colors[1],
-            margin=5,
+            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(menu)},
         ),
         widget.GroupBox(
             font=system_font,
-            fontsize=24,
+            fontsize=18,
             foreground=colors[2],
             background=colors[1],
             borderWidth=4,
             highlight_method="text",
-            this_current_screen_border=colors[6],
+            this_current_screen_border=colors[8],
             active=colors[5],
             inactive=colors[9],
         ),
@@ -263,7 +269,7 @@ def init_widgets_list():
             font=system_font,
             fontsize=24,
             text=" 󰥔",
-            foreground=colors[8],
+            foreground=colors[6],
             background=colors[1],
         ),
         widget.Clock(
