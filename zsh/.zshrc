@@ -42,23 +42,6 @@ if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
 
-# SSH key
-env=~/.ssh/agent.env
-agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
-agent_start () {
-    (umask 077; ssh-agent >| "$env")
-    . "$env" >| /dev/null ; }
-agent_load_env
-# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
-agent_run_state=$(ssh-add -l >| /dev/null 2>&1; echo $?)
-if [ ! "$SSH_AUTH_SOCK" ] || [ "$agent_run_state" = 2 ]; then
-    agent_start
-    ssh-add
-elif [ "$SSH_AUTH_SOCK" ] && [ "$agent_run_state" = 1 ]; then
-    ssh-add
-fi
-unset env
-
 # Zim
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
