@@ -1,3 +1,6 @@
+# Avoid duplicate entries in PATH
+typeset -U path
+
 # History for zsh
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -55,22 +58,15 @@ if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
 
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-path=('/home/acampbell/.juliaup/bin' $path)
-export PATH
-
-# <<< juliaup initialize <<<
+# juliaup
+if [ -d "$HOME/.juliaup/bin" ]; then
+  export PATH="$HOME/.juliaup/bin:$PATH"
+fi
 
 # pnpm
-export PNPM_HOME="/home/acampbell/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+if [ -d "$HOME/.local/share/pnpm" ]; then
+   export PATH="$HOME/.local/share/pnpm:$PATH"
+fi
 
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
 [ -f "$HOME/.zsh_exports" ] && source "$HOME/.zsh_exports"
