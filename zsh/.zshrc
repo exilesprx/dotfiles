@@ -14,7 +14,7 @@ bindkey "^[[1;5D" backward-word
 
 # cargo/rust
 if [ -d "$HOME/.cargo/bin" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
+  path=("$HOME/.cargo/bin" $path)
 fi
 
 # fnm
@@ -24,18 +24,18 @@ fi
 
 # Ghcup
 if [ -f "$HOME/.ghcup/env" ]; then
-  source "$HOME/.ghcup/env" # ghcup-env
+  path=("$HOME/.ghcup/env" $path)
 fi
 
 # goenv
 if [ -d "/opt/goenv" ]; then
   export GOENV_ROOT="/opt/goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
+  path=("$GOENV_ROOT/bin" $path)
   eval "$(goenv init -)"
 fi
 
 if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
-  export PATH="$PATH:$GOPATH/bin"
+  path=("$GOPATH/bin" $path)
 fi
 
 # Starship
@@ -60,21 +60,21 @@ fi
 
 # juliaup
 if [ -d "$HOME/.juliaup/bin" ]; then
-  export PATH="$HOME/.juliaup/bin:$PATH"
+  path=("$HOME/.juliaup/bin" $path)
 fi
 
 # pnpm
 if [ -d "$HOME/.local/share/pnpm" ]; then
-   export PATH="$HOME/.local/share/pnpm:$PATH"
+  path=("$HOME/.local/share/pnpm" $path)
 fi
 
 # opencode
 if [ -d "$HOME/.opencode/bin" ]; then
-   export PATH="$HOME/.opencode/bin:$PATH"
+  path=("$HOME/.opencode/bin" $path)
 fi
 
 if [ -d "$HOME/.local/bin" ]; then
-  export PATH="$HOME/.local/bin:$PATH"
+  path=("$HOME/.local/bin" $path)
 fi
 
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
