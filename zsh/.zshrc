@@ -68,5 +68,13 @@ if [ -d "$HOME/.local/share/pnpm" ]; then
    export PATH="$HOME/.local/share/pnpm:$PATH"
 fi
 
+# opencode
+if [ -d "$HOME/.opencode/bin" ]; then
+   export PATH="$HOME/.opencode/bin:$PATH"
+fi
+
+if [ -d "$HOME/.local/bin" ]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
+
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
-[ -f "$HOME/.zsh_exports" ] && source "$HOME/.zsh_exports"
