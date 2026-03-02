@@ -1,14 +1,32 @@
 #!/bin/zsh
 
 ## Aliases
-alias ls='eza --icons=always --color=always'
-alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show long listing of all except ".."
-alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
-alias lt='eza --icons=always --color=always --tree --level 1'
-alias vim='nvim'
 alias welcome='eos-welcome --once'
 alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
-alias cat='bat'
-alias grep='batgrep'
-alias zel='zellij'
-alias cd='z'
+
+if command -v eza &>/dev/null; then
+  alias ls='eza --icons=always --color=always'
+  alias ll='eza --icons=always --color=always -la --ignore-glob ".."'   # show long listing of all except ".."
+  alias l='eza --icons=always --color=always -la --ignore-glob ".*"'   # show long listing but no hidden dotfiles except "."
+  alias lt='eza --icons=always --color=always --tree --level 1'
+fi
+
+if command -v nvim &>/dev/null; then
+  alias vim='nvim'
+fi
+
+if command -v bat &>/dev/null; then
+  alias cat='bat'
+fi
+
+if command -v batgrep &>/dev/null; then
+  alias grep='batgrep'
+fi
+
+if command -v zellij &>/dev/null; then
+  alias zel='zellij'
+fi
+
+if command -v z &>/dev/null; then
+  alias cd='z'
+fi

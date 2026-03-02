@@ -8,8 +8,6 @@ setopt sharehistory histignorealldups
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-[ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
-[ -f "$HOME/.zsh_exports" ] && source "$HOME/.zsh_exports"
 
 # cargo/rust
 if [ -d "$HOME/.cargo/bin" ]; then
@@ -43,6 +41,7 @@ if command -v starship &> /dev/null; then
 fi
 
 # Zim
+ZIM_HOME="$HOME/.zim"
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
@@ -65,7 +64,6 @@ export PATH
 
 # <<< juliaup initialize <<<
 
-
 # pnpm
 export PNPM_HOME="/home/acampbell/.local/share/pnpm"
 case ":$PATH:" in
@@ -73,3 +71,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+[ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
+[ -f "$HOME/.zsh_exports" ] && source "$HOME/.zsh_exports"
