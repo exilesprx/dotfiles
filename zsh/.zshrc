@@ -11,6 +11,12 @@ setopt sharehistory histignorealldups
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Android sdk
+if [ -d "/opt/android-sdk" ]; then
+  export ANDROID_SDK_ROOT="/opt/android-sdk"
+  path=("$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" $path)
+  path=("$ANDROID_SDK_ROOT/platform-tools" $path)
+fi
 
 # cargo/rust
 if [ -d "$HOME/.cargo/bin" ]; then
