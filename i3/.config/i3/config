@@ -293,6 +293,7 @@ bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec sh -c "DRI_PRIME=1 /usr/bin/google-chrome-stable"
+bindsym $mod+Shift+w exec sh -c "DRI_PRIME=1 /usr/bin/google-chrome-stable"
 bindsym $mod+n exec /usr/bin/thunar
 bindsym Print exec flameshot gui
 
