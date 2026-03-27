@@ -618,3 +618,4 @@ bindsym $mod+t exec rofi -show window \
 
 # for minimum installs
 # exec_always --no-startup-id feh --bg-fill /home/acampbell/.config/wallpapers/husky.jpg
+exec_always --no-startup-id ~/.fehbg
