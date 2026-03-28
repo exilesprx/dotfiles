@@ -1,0 +1,30 @@
+/*******************************************************
+ * Catppuccin Mocha color palette for rofi
+ * https://github.com/catppuccin/catppuccin
+ *******************************************************/
+* {
+    foreground:                  #cdd6f4;
+    background:                  #1e1e2e;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    normal-foreground:           @foreground;
+    normal-background:           #1e1e2e;
+    selected-normal-foreground:  #f38ba8;
+    selected-normal-background:  #313244;
+    alternate-normal-foreground: @foreground;
+    alternate-normal-background: #1e1e2e;
+    urgent-foreground:           #f38ba8;
+    urgent-background:           #1e1e2e;
+    selected-urgent-foreground:  #1e1e2e;
+    selected-urgent-background:  #f38ba8;
+    alternate-urgent-foreground: #f38ba8;
+    alternate-urgent-background: #1e1e2e;
+    active-foreground:           #89b4fa;
+    active-background:           #1e1e2e;
+    selected-active-foreground:  #89b4fa;
+    selected-active-background:  #313244;
+    alternate-active-foreground: #89b4fa;
+    alternate-active-background: #1e1e2e;
+    separatorcolor:              #45475a;
+    border-color:                #45475a;
+    spacing:                     2;
+}

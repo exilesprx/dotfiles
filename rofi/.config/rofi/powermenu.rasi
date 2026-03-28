@@ -3,7 +3,7 @@
  * Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
  *******************************************************/
 configuration {
-    font:            "Noto Sans Regular 10";
+    font:            "IntoneMono Nerd Font 14";
     show-icons:      false;
     icon-theme:      "Qogir";
     scroll-method:   0;
@@ -11,17 +11,17 @@ configuration {
     sidebar-mode:    false;
 }
 
-@import "~/.config/rofi/arc_dark_transparent_colors.rasi"
+@import "~/.config/rofi/catppuccin-mocha-colors.rasi"
 
 window {
     background-color: @background;
-    border:           0;
+    border:           3px;
+    border-color:     @border-color;
     padding:          10;
-    transparency:     "real";
-    width:            120px;
-    location:         east;
-    /*y-offset:       18;*/
-    /*x-offset:       850;*/
+    width:            160px;
+    location:         north east;
+    x-offset:         -10;
+    y-offset:         40;
 }
 listview {
     lines:     7;
