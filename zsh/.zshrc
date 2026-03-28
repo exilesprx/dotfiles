@@ -34,8 +34,8 @@ if [ -f "$HOME/.ghcup/env" ]; then
 fi
 
 # goenv
-if [ -d "/opt/goenv" ]; then
-  export GOENV_ROOT="/opt/goenv"
+if [ -d "$HOME/.local/share/goenv" ]; then
+  export GOENV_ROOT="$HOME/.local/share/goenv"
   path=("$GOENV_ROOT/bin" $path)
   eval "$(goenv init -)"
 fi
