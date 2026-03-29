@@ -13,7 +13,7 @@ set -eu
 [ -z "${WALLPAPER_FILL_MODE:-}" ] && WALLPAPER_FILL_MODE=fill
 
 # Provide sensible defaults if variables not exported (e.g. i3 'set' vars not in env)
-DEFAULT_SINGLE="$HOME/Pictures/husky.jpg"
+DEFAULT_SINGLE="$HOME/.config/wallpapers/husky.jpg"
 if [ -z "${WALLPAPER_SINGLE:-}" ] && [ -f "$DEFAULT_SINGLE" ]; then
   WALLPAPER_SINGLE="$DEFAULT_SINGLE"
 fi
