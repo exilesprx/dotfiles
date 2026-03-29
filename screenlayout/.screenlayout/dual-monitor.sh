@@ -1,6 +1,4 @@
 #!/bin/sh
-
-#!/bin/sh
 # Dynamic dual-monitor setup (dock / MST safe). Works when invoked from zsh.
 # Strategy:
 #  1. Detect internal panel (primary or eDP/LVDS)

@@ -416,6 +416,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # start a script to setup displays
 exec --no-startup-id ~/.screenlayout/monitor-setup.sh
+# re-run monitor setup on demand (e.g. after plugging/unplugging external display)
+bindsym $mod+F7 exec --no-startup-id ~/.screenlayout/monitor-setup.sh
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
