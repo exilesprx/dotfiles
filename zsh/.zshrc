@@ -84,3 +84,4 @@ if [ -d "$HOME/.local/bin" ]; then
 fi
 
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
+[ -f "$HOME/.zsh_functions" ] && source "$HOME/.zsh_functions"
