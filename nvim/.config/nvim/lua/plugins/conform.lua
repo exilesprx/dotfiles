@@ -12,7 +12,7 @@ return {
       },
       prettier = {
         condition = function(_, ctx)
-          return vim.fs.find({ ".prettierrc.json" }, { path = ctx.filename, upward = true })[1]
+          return not vim.fs.find({ ".oxfmtrc.json", ".oxfmtrc.jsonc" }, { path = ctx.filename, upward = true })[1]
         end,
       },
     },
