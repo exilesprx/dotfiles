@@ -29,9 +29,8 @@ stow-iwlwifi:
 stow-tlp:
   stow -v --adopt --target=/etc/tlp.d/ tlp
 
-stow-primerun:
-  stow -v --adopt --target=/usr/local/bin primerun
-  chmod +x /usr/local/bin/prime-run
+stow-lightdm:
+  stow -v --adopt --target=/etc/lightdm/xorg.conf.d/ lightdm
 
 # update the code.desktop file to point to the this
 # script so variables are set correctly
