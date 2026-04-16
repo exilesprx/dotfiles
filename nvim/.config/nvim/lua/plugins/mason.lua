@@ -9,6 +9,7 @@ return {
         "phpcs",
         "php-cs-fixer",
         "prettier",
+        "ols",
         "stylua",
         "shellcheck",
         "shfmt",
