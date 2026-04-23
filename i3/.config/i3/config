@@ -340,23 +340,23 @@ assign [class ="jetbrains-toolbox"] $ws7
 assign [class="thunderbird"] $ws8
 assign [class="TelegramDesktop"] $ws8
 assign [class ="Spotify"] $ws8
-assign [class="Gimp-2.10"] $ws9
+assign [class="^Gimp"] $ws9
 
 # automatic set focus new window if it opens on another workspace than the current:
-for_window [class=Alacritty] focus
-for_window [class=(?i)firefox] focus
-for_window [class=Google-chrome] focus
-for_window [class=Thorium-browser] focus
-for_window [class=Thunar] focus
-for_window [class=Thunderbird] focus
-for_window [class=TelegramDesktop] focus
-for_window [class=Slack] focus
-for_window [class=Spotify] focus
-for_window [class=jetbrains-phpstorm] focus
-for_window [class=Code] focus
-for_window [class=jetbrains-toolbox] focus
-for_window [class=jetbrains-pycharm-ce] focus
-for_window [class=Gimp-2.10] focus
+for_window [class="Alacritty"] focus
+for_window [class="(?i)firefox"] focus
+for_window [class="Google-chrome"] focus
+for_window [class="Thorium-browser"] focus
+for_window [class="Thunar"] focus
+for_window [class="Thunderbird"] focus
+for_window [class="TelegramDesktop"] focus
+for_window [class="Slack"] focus
+for_window [class="Spotify"] focus
+for_window [class="jetbrains-phpstorm"] focus
+for_window [class="Code"] focus
+for_window [class="jetbrains-toolbox"] focus
+for_window [class="jetbrains-pycharm-ce"] focus
+for_window [class="^Gimp"] focus
 
 ##############
 # compositor #
