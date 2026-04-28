@@ -23,9 +23,6 @@ unstow package:
 stow-libinput:
   stow -v --adopt --target=/usr/share/X11/xorg.conf.d/ x11
 
-stow-iwlwifi:
-  stow -v --adopt --target=/etc/modprobe.d/ iwlwifi
-
 stow-tlp:
   stow -v --adopt --target=/etc/tlp.d/ tlp
 
