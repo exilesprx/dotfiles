@@ -83,5 +83,9 @@ if [ -d "$HOME/.local/bin" ]; then
   path=("$HOME/.local/bin" $path)
 fi
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
 [ -f "$HOME/.zsh_functions" ] && source "$HOME/.zsh_functions"
