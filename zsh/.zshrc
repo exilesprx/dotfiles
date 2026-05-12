@@ -87,5 +87,9 @@ if command -v mise &> /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
+if [ -d "$HOME/.luarocks/bin" ]; then
+  path=("$HOME/.luarocks/bin" $path)
+fi
+
 [ -f "$HOME/.zsh_aliases" ] && source "$HOME/.zsh_aliases"
 [ -f "$HOME/.zsh_functions" ] && source "$HOME/.zsh_functions"
