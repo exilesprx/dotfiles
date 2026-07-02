@@ -4,8 +4,9 @@ return {
     opts = function(_, opts)
       opts.options.theme = "palenight"
       opts.sections = opts.sections or {}
-      opts.sections.lualine_z = vim.list_extend(opts.sections.lualine_z or {}, {
-        { require("opencode").statusline },
+      opts.sections.lualine_z = opts.sections.lualine_z or {}
+      table.insert(opts.sections.lualine_z, {
+        require("opencode").statusline,
       })
     end,
   },
