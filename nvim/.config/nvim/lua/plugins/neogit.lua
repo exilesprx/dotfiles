@@ -2,9 +2,8 @@ return {
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim", -- optional - Diff integration
-      "ibhagwan/fzf-lua", -- optional
+      "sindrets/diffview.nvim",
+      "folke/snacks.nvim",
     },
     config = true,
     keys = {
