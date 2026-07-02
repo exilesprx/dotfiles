@@ -3,16 +3,15 @@ return {
     "saghen/blink.cmp",
     opts = {
       keymap = {
-        preset = "default",
-      },
-      sources = {
-        per_filetype = {
-          opencode_ask = { "lsp", "buffer" },
-        },
-        providers = {
-          lsp = {
-            fallback = {},
-          },
+        ["<Tab>"] = {
+          "snippet_forward",
+          function()
+            return require("sidekick").nes_jump_or_apply()
+          end,
+          function()
+            return vim.lsp.inline_completion.get()
+          end,
+          "fallback",
         },
       },
     },
