@@ -10,6 +10,8 @@ setopt sharehistory histignorealldups
 # Custom key binds
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+bindkey '\e^?' backward-kill-word
+bindkey '\e^H' backward-kill-word
 
 # Android sdk
 if [ -d "$HOME/.local/share/android-sdk" ]; then
