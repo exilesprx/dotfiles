@@ -7,12 +7,6 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt sharehistory histignorealldups
 
-# Custom key binds
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-bindkey '\e^?' backward-kill-word
-bindkey '\e^H' backward-kill-word
-
 # Fall back to xterm-256color on remote systems that lack the local terminfo
 if ! infocmp "$TERM" &>/dev/null 2>&1; then
   export TERM="xterm-256color"
