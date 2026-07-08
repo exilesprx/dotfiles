@@ -3,6 +3,7 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
+        "beautysh",
         "elixir-ls",
         "lua-language-server",
         "phpactor",
