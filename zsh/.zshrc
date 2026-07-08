@@ -13,6 +13,11 @@ bindkey "^[[1;5D" backward-word
 bindkey '\e^?' backward-kill-word
 bindkey '\e^H' backward-kill-word
 
+# Fall back to xterm-256color on remote systems that lack the local terminfo
+if ! infocmp "$TERM" &>/dev/null 2>&1; then
+  export TERM="xterm-256color"
+fi
+
 # Android sdk
 if [ -d "$HOME/.local/share/android-sdk" ]; then
   export ANDROID_SDK_ROOT="$HOME/.local/share/android-sdk"

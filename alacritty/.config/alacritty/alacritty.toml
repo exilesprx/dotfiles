@@ -3,9 +3,6 @@
 opacity = 0.9
 blur = true
 
-[env]
-TERM = "xterm-256color"
-
 [general]
 import = [
   "/home/acampbell/.config/alacritty/font.toml",
