@@ -1,4 +1,5 @@
 #!/bin/zsh
+[[ -o interactive ]] || return
 
 ## Aliases
 alias welcome='eos-welcome --once'
