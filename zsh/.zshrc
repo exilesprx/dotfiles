@@ -26,7 +26,7 @@ fi
 
 # fnm
 if command -v fnm &> /dev/null; then
-    eval "`fnm env`"
+    eval "$(fnm env)"
 fi
 
 # Ghcup
