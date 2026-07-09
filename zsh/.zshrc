@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Avoid duplicate entries in PATH
 typeset -U path
 
