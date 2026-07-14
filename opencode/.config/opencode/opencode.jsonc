@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/big-pickle",
+  "small_model": "opencode/deepseek-v4-flash-free",
+  "default_agent": "plan",
+  "agent": {
+    "build": {
+      "model": "opencode/mimo-v2.5-free",
+      "color": "secondary",
+    },
+    "plan": { "model": "opencode/big-pickle", "color": "primary" },
+  },
+}
