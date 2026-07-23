@@ -56,7 +56,7 @@ Collect only unchecked tasks. If no unchecked tasks exist, report that all tasks
 
 For each unchecked task, use the Task tool to delegate implementation to a build agent. This is how work gets done — you orchestrate from plan mode, the Task tool's subagent executes.
 
-- Set `subagent_type` to `"general"` for full tool access
+- Set `subagent_type` to `"build"` for full tool access
 - Include in the task prompt:
   - The task description
   - The file path to the plan file
