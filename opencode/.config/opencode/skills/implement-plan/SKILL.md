@@ -62,6 +62,16 @@ For each unchecked task, use the Task tool to delegate implementation to a build
   - The file path to the plan file
   - Any relevant context from the plan (objective, notes)
   - Instructions to implement the task fully (code changes, file operations, etc.)
+  - Instructions on asking questions:
+    - If you encounter ambiguity or need clarification, present your questions using this format:
+      ```
+      Questions
+      - [question 1]
+      - [question 2]
+      ```
+    - You may ask multiple questions — use a separate list item for each
+    - Do not guess or assume — ask if anything is unclear
+    - After asking questions, stop execution and wait for clarification
 
 If the user specifies a model (via `:model` syntax or explicit mention), include it in the Task tool invocation.
 
@@ -78,6 +88,32 @@ After each task completes successfully:
 
 If a task fails, do NOT check it off. Report the error and ask the user how to proceed.
 
+### Step 4.5: Handle subagent questions
+
+After each task completes, check if the result contains a "Questions" header.
+
+If questions are found:
+1. Extract all list items as questions
+2. Present them to the user as a numbered list:
+   "The subagent working on [task] has [N] question(s):
+    1. [question 1]
+    2. [question 2]"
+3. Get the user's answers (can be partial — "answer 1, skip 2, answer 3")
+4. Resume the task with the same `task_id`:
+   ```
+   Answers
+   - [answer to question 1]
+   - [answer to question 2]
+   - [answer to question 3]
+
+   Please continue with the task.
+   ```
+5. Wait for the continuation result
+6. Check again for more questions and repeat if needed
+7. Once no questions remain, proceed to Step 4 (update plan)
+
+If no questions are found, proceed normally.
+
 ### Step 5: Report summary
 
 After all tasks are processed, report:
@@ -93,6 +129,7 @@ After all tasks are processed, report:
 - If no unchecked tasks remain, report all tasks are complete
 - If a Task tool invocation fails, report the error and continue with the next task
 - If updating the plan file fails, report the error but note the task was completed
+- If a subagent asks questions and the user cannot provide an answer, document the questions in the plan file under a new "## Open Questions" section and skip the task
 - Always surface errors to the user — never retry silently
 
 ## Notes
