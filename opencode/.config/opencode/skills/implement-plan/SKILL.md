@@ -27,6 +27,10 @@ Look for patterns like:
 - "execute the plan"
 - "build out the plan"
 
+## Important: Execution model
+
+You are in plan mode. You CANNOT edit files or run commands directly. Instead, you MUST use the **Task tool** to delegate each task to a subagent. The Task tool spawns a fresh agent session with full tool access that CAN make edits and run commands. You orchestrate from plan mode - do NOT tell the user to switch modes.
+
 ## How to use me
 
 ### Step 1: Resolve the plan file
@@ -50,7 +54,7 @@ Collect only unchecked tasks. If no unchecked tasks exist, report that all tasks
 
 ### Step 3: Delegate tasks
 
-For each unchecked task, use the Task tool to delegate implementation to a build agent.
+For each unchecked task, use the Task tool to delegate implementation to a build agent. This is how work gets done — you orchestrate from plan mode, the Task tool's subagent executes.
 
 - Set `subagent_type` to `"general"` for full tool access
 - Include in the task prompt:
@@ -97,4 +101,3 @@ After all tasks are processed, report:
 - The plan agent's context grows as it tracks progress (unavoidable for orchestration)
 - Tasks are executed sequentially to maintain order and allow dependency tracking
 - The user can interrupt at any point; partial progress is saved via checkbox updates
-
