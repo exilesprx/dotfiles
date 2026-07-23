@@ -26,6 +26,14 @@ if [ -d "$HOME/.cargo/bin" ]; then
     path=("$HOME/.cargo/bin" $path)
 fi
 
+if [ -d "$HOME/.local/bin" ]; then
+    path=("$HOME/.local/bin" $path)
+fi
+
+if command -v mise &> /dev/null; then
+    eval "$(mise activate zsh)"
+fi
+
 # fnm
 if command -v fnm &> /dev/null; then
     eval "$(fnm env)"
@@ -80,14 +88,6 @@ fi
 # opencode
 if [ -d "$HOME/.opencode/bin" ]; then
     path=("$HOME/.opencode/bin" $path)
-fi
-
-if [ -d "$HOME/.local/bin" ]; then
-    path=("$HOME/.local/bin" $path)
-fi
-
-if command -v mise &> /dev/null; then
-    eval "$(mise activate zsh)"
 fi
 
 if [ -d "$HOME/.luarocks/bin" ]; then
