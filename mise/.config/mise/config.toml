@@ -10,6 +10,7 @@ erlang = "latest"
 # "go:github.com/junegunn/fzf" = "latest"
 # "go:honnef.co/go/tools/cmd/staticcheck" = "latest"
 
+"cargo:alacritty" = "latest"
 "cargo:bat" = "latest"
 "cargo:git-delta" = "latest"
 "cargo:eza" = "latest"
