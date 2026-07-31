@@ -44,17 +44,6 @@ if [ -f "$HOME/.ghcup/env" ]; then
     path=("$HOME/.ghcup/env" $path)
 fi
 
-# goenv
-if [ -d "$HOME/.local/share/goenv" ]; then
-    export GOENV_ROOT="$HOME/.local/share/goenv"
-    path=("$GOENV_ROOT/bin" $path)
-    eval "$(goenv init -)"
-fi
-
-if [ -n "$GOPATH" ] && [ -d "$GOPATH/bin" ]; then
-    path=("$GOPATH/bin" $path)
-fi
-
 # Starship
 if command -v starship &> /dev/null; then
     eval "$(starship init zsh)"
