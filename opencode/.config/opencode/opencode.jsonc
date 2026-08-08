@@ -11,9 +11,7 @@
     "plan": {
       "model": "opencode/big-pickle",
       "color": "primary"
-    }
-  },
-  "agents": {
+    },
     "reviewer": {
       "description": "Read-only code reviewer and security auditor",
       "mode": "subagent",
