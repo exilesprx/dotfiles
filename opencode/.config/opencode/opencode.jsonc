@@ -6,8 +6,30 @@
   "agent": {
     "build": {
       "model": "opencode/mimo-v2.5-free",
-      "color": "secondary",
+      "color": "secondary"
     },
-    "plan": { "model": "opencode/big-pickle", "color": "primary" },
+    "plan": {
+      "model": "opencode/big-pickle",
+      "color": "primary"
+    }
   },
+  "agents": {
+    "reviewer": {
+      "description": "Read-only code reviewer and security auditor",
+      "mode": "subagent",
+      "model": "opencode/big-pickle",
+      "color": "#ff6b6b",
+      "system": "Review the git diff for logic errors, edge cases, missing unit tests, and security vulnerabilities. List findings in order of severity.",
+      "permissions": [
+        { "action": "edit", "resource": "*", "effect": "deny" },
+        { "action": "shell", "resource": "git push*", "effect": "deny" }
+      ]
+    },
+    "q-a": {
+      "description": "Codebase-wide comprehension and architectural Q&A",
+      "mode": "subagent",
+      "model": "opencode/laguna-s-2.1-free",
+      "color": "#4ecdc4"
+    }
+  }
 }
