@@ -1,17 +1,15 @@
 ---
 name: implement-plan
-description: Implement a plan file by delegating tasks to build agents
+description: Implement a plan file by executing tasks directly
 ---
 
 ## What I do
 
 - Reads a plan file from `.specs/plans/` in the current working directory
 - Parses unchecked tasks (`- [ ]`) from the plan
-- Delegates each task to a build agent via the Task tool
-- After each task, reads the plan file to verify progress and stay oriented
+- Implements each task directly (edits files, runs commands, creates/modifies code)
+- Marks each task complete in the plan file after successful implementation
 - Reports a summary when all tasks are done
-
-> **Important:** The orchestrating agent runs in plan mode (read-only) — it never writes files. The subagent handles all file edits, including updating the plan file checkboxes.
 
 ## When to use me
 
@@ -53,76 +51,43 @@ Extract all task lines from the plan. Tasks are markdown checkboxes:
 
 Collect only unchecked tasks. If no unchecked tasks exist, report that all tasks are complete and stop.
 
-### Step 3: Delegate tasks
+### Step 3: Implement tasks
 
-For each unchecked task, use the Task tool to delegate implementation to a build agent. This is how work gets done — you orchestrate, the Task tool's subagent executes.
+For each unchecked task, implement it directly — edit files, run commands, create or modify code as needed.
 
-**Your role vs. the subagent's role:**
+For each task:
 
-- **You (orchestrator):** Read the plan, delegate tasks, verify progress after each task, report summary. You do NOT write source code, run commands, or edit any files.
-- **Subagent (build agent):** Implements the task, runs commands, creates/modifies files, AND marks the task complete in the plan file.
+1. Read the task description and any relevant context from the plan (objective, notes)
+2. Locate the exact files and line numbers referenced in the plan
+3. Implement the task fully (code changes, file operations, etc.)
+4. Run the project's test suite to verify no regressions:
+   - If the plan specifies a test command, use that
+   - Otherwise, check for common test runners (pytest, npm test, cargo test, etc.)
+   - If tests fail, do not mark the task complete — report the failures to the user and ask how to proceed
+5. Mark the task complete in the plan file (change `- [ ]` to `- [x]` for the corresponding task line)
 
-> **Note:** The `subagent_type` must be set to `"build"`. This agent type must be configured in your opencode setup with full tool access.
+If you encounter ambiguity or need clarification, present your questions to the user as a numbered list:
 
-Include in the task prompt:
+```
+Questions
+- [question 1]
+- [question 2]
+```
 
-- The task description
-- The file path to the plan file
-- Any relevant context from the plan (objective, notes)
-- Instructions to implement the task fully (code changes, file operations, etc.)
-- Instructions to mark the task complete in the plan file after implementation succeeds (change `- [ ]` to `- [x]` for the corresponding task line)
-- Instructions to run the project's test suite after implementation to verify no regressions:
-  - If the plan specifies a test command, use that
-  - Otherwise, check for common test runners (pytest, npm test, cargo test, etc.)
-  - If tests fail, do not mark the task complete — report the failures as questions
-- Exact file paths and line numbers referenced in the plan — include them verbatim so the subagent doesn't have to search
-- Instructions on asking questions:
-  - If you encounter ambiguity or need clarification, present your questions using this format:
-    ```
-    Questions
-    - [question 1]
-    - [question 2]
-    ```
-  - You may ask multiple questions — use a separate list item for each
-  - Do not guess or assume — ask if anything is unclear
-  - After asking questions, stop execution and wait for clarification
+Do not guess or assume — ask if anything is unclear. After asking questions, stop execution and wait for clarification before proceeding.
 
-If the user specifies a model (via opencode's `:model` syntax or explicit mention), include it in the Task tool invocation.
-
-Wait for each task to complete before proceeding to the next. Tasks are executed sequentially so that later tasks can depend on earlier ones (e.g., creating a file that a subsequent task modifies). If a subagent does not respond within a reasonable timeout (e.g., 5 minutes), report a timeout to the user and ask how to proceed.
+Tasks are implemented sequentially so that later tasks can depend on earlier ones (e.g., creating a file that a subsequent task modifies).
 
 ### Step 4: Verify and orient
 
-After each task completes, read the plan file to:
+After implementing each task, re-read the plan file to:
 
 - Confirm the checkbox was updated (task marked `- [x]`)
-- Check for any notes or "Questions" the subagent added
 - Maintain awareness of overall progress
 
 If the task was not marked complete, or the plan was modified beyond the checkbox (tasks added/removed/reordered), report it to the user and ask how to proceed.
 
-If questions are found (subagent returned a "Questions" header):
-
-1. Extract all list items as questions
-2. Present them to the user as a numbered list:
-   "The subagent working on [task] has [N] question(s):
-    1. [question 1]
-    2. [question 2]"
-3. Get the user's answers (can be partial — "answer 1, skip 2, answer 3")
-4. Resume the task with the same `task_id`:
-   ```
-   Answers
-   - [answer to question 1]
-   - [answer to question 2]
-   - [answer to question 3]
-
-   Please continue with the task.
-   ```
-5. Wait for the continuation result
-6. Check again for more questions and repeat if needed
-7. Once no questions remain, proceed to Step 5 (next task)
-
-If no questions are found, proceed to Step 5 (next task).
+If you asked questions and the user answered them, resume the task with their answers. Once no questions remain, proceed to Step 5 (next task).
 
 ### Step 5: Report summary
 
@@ -138,17 +103,12 @@ After all tasks are processed, report:
 - If the plan file does not exist, inform the user and suggest using `add-plan` first
 - If the plan file is malformed (no valid tasks, duplicate checkboxes, unparseable structure), report the issue and stop
 - If no unchecked tasks remain, report all tasks are complete
-- If a Task tool invocation fails, report the error and continue with the next task
-- If the subagent returns an empty result, re-read the plan file to check if the checkbox was updated. If not, report to the user that the task outcome is unclear.
-- If the subagent reports it cannot edit files (e.g., permission errors), report the permission issue to the user and stop execution
-- If the subagent modifies the plan beyond the task checkbox (adds/removes/reorders tasks), report the unexpected changes and ask the user how to proceed
-- If a subagent asks questions and the user cannot provide an answer, report the unanswered questions to the user and ask how to proceed
-- If a subagent times out or hangs, report the timeout and ask the user how to proceed
+- If a task fails (file edit fails, command errors, permission issues), report the error to the user and ask how to proceed
+- If the plan is modified beyond the task checkbox (tasks added/removed/reordered), report the unexpected changes and ask the user how to proceed
+- If the user cannot provide an answer to a question, report the unanswered questions and ask how to proceed
 - Always surface errors to the user — never retry silently
 
 ## Notes
 
-- Each Task subagent starts with fresh context (minimal context) — only the task prompt is passed
-- The orchestrating agent's context grows as it tracks progress (unavoidable for orchestration)
 - Tasks are executed sequentially to maintain order and allow dependency tracking
 - The user can interrupt at any point; partial progress is saved via checkbox updates
