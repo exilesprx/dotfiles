@@ -1,9 +1,9 @@
 [tools]
 elixir = "latest"
 erlang = "latest"
-go = "1.26.5"
+go = "1.27.0"
 
-"go:github.com/golangci/golangci-lint/v2/cmd/golangci-lint" = "v2.12.2"
+"go:github.com/golangci/golangci-lint/v2/cmd/golangci-lint" = "v2.13.1"
 "go:golang.org/x/tools/gopls" = "v0.23.0"
 "go:mvdan.cc/gofumpt" = "latest"
 "go:github.com/jesseduffield/lazygit" = "latest"
