@@ -1,3 +1,6 @@
+[settings]
+all_compile = true
+
 [tools]
 elixir = "latest"
 erlang = "latest"
