@@ -2,6 +2,8 @@
 elixir = "latest"
 erlang = "latest"
 go = "latest"
+zig = "latest"
+zls = "latest"
 
 "go:github.com/golangci/golangci-lint/v2/cmd/golangci-lint" = "v2.13.1"
 "go:golang.org/x/tools/gopls" = "v0.23.0"
