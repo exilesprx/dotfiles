@@ -1,3 +1,6 @@
+[env]
+_.php = { extra_configure_options = "--enable-debug" }
+
 [settings]
 all_compile = true
 
@@ -5,6 +8,7 @@ all_compile = true
 elixir = "latest"
 erlang = "latest"
 go = "latest"
+php = "latest"
 zig = "latest"
 zls = "latest"
 
