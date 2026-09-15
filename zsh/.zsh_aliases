@@ -4,6 +4,7 @@
 ## Aliases
 alias welcome='eos-welcome --once'
 alias pac-clean='sudo pacman -Qdt | sudo pacman -Rns -'
+alias diff='diff -u --color'
 
 if command -v eza &>/dev/null; then
     alias ls='eza --icons=always --color=always'
