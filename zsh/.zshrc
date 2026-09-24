@@ -7,7 +7,7 @@ typeset -U path
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt sharehistory histignorealldups
+setopt sharehistory histignorealldups histignorespace
 
 # Fall back to xterm-256color on remote systems that lack the local terminfo
 if ! infocmp "$TERM" &>/dev/null 2>&1; then
