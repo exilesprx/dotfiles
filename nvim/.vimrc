@@ -1,1 +1,1 @@
-set nocp
+set nocompatible
